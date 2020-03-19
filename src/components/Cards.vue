@@ -1,0 +1,30 @@
+<template>
+  <div class="cards">
+    <card v-for="i in 8" :key="i.id"/>
+  </div>
+</template>
+
+<script>
+import Card from './Card.vue';
+
+export default {
+  name: 'HelloWorld',
+  props: {
+    msg: String
+  },
+  components: {
+    Card
+  }
+}
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style>
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr;
+  column-gap: 5rem;
+  row-gap: 5rem;
+}
+</style>
