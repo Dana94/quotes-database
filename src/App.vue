@@ -6,18 +6,21 @@
         <br />
         <span>Database</span>
       </h1>
-
+      <Tags />
       <Cards />
     </div>
   </div>
 </template>
 
 <script>
+import Tags from './components/Tags/Tags.vue'
+
 import Cards from './components/Cards/Cards.vue'
 
 export default {
   name: 'App',
   components: {
+    Tags,
     Cards
   }
 }
@@ -36,10 +39,6 @@ export default {
 .container {
   width: 75%;
   margin: 0 auto;
-}
-
-h1 {
-  margin-bottom: 5rem;
 }
 
 h1 span {

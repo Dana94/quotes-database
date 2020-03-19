@@ -1,6 +1,6 @@
 <template>
   <div class="cards">
-    <card v-for="i in 8" :key="i.id"/>
+    <card v-for="i in 8" :key="i.id" />
   </div>
 </template>
 
@@ -22,9 +22,17 @@ export default {
 <style>
 .cards {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   grid-template-rows: 1fr;
-  column-gap: 5rem;
-  row-gap: 5rem;
+  column-gap: 2rem;
+  row-gap: 3rem;
+}
+
+@media (min-width: 768px) {
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 5rem;
+    row-gap: 5rem;
+  }
 }
 </style>

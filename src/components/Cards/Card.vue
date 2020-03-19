@@ -26,6 +26,12 @@ export default {
   padding: 1rem;
 }
 .quote-icon {
-  width: 3rem;
+  width: 2rem;
+}
+
+@media (min-width: 768px) {
+  .quote-icon {
+    width: 3rem;
+  }
 }
 </style>
