@@ -8,10 +8,7 @@
 import Card from './Card.vue';
 
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
-  },
+  name: 'Cards',
   components: {
     Card
   }
