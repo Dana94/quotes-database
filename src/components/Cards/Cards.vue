@@ -32,4 +32,12 @@ export default {
     row-gap: 5rem;
   }
 }
+
+@media (min-width: 925px) {
+  .cards {
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 5rem;
+    row-gap: 5rem;
+  }
+}
 </style>

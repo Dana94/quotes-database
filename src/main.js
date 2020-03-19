@@ -3,9 +3,10 @@ import App from './App.vue'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faQuoteLeft, faQuoteRight, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import { faTwitter  } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faQuoteLeft, faQuoteRight, faChevronLeft, faChevronRight)
+library.add(faQuoteLeft, faQuoteRight, faChevronLeft, faChevronRight, faTwitter )
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
