@@ -1,10 +1,10 @@
 <template>
   <div class="tags">
-    <font-awesome-icon icon="chevron-left" />
+    <font-awesome-icon icon="chevron-left" class="fa-2x" />
     <div class="tags-container">
       <tag v-for="i in 4" :key="i.id" />
     </div>
-    <font-awesome-icon icon="chevron-right" />
+    <font-awesome-icon icon="chevron-right" class="fa-2x"/>
   </div>
 </template>
 

@@ -1,11 +1,11 @@
 <template>
   <div class="card">
-    <font-awesome-icon icon="quote-left" />
+    <font-awesome-icon icon="quote-left" class="fa-2x"/>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
       incididunt ut labore et dolore magna aliqua.
     </p>
-    <font-awesome-icon icon="quote-right" />
+    <font-awesome-icon icon="quote-right" class="fa-2x"/>
     <p>~ Author ~</p>
   </div>
 </template>
