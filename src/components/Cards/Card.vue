@@ -1,13 +1,11 @@
 <template>
   <div class="card">
-    <img class="quote-icon" src="../../assets/quote-open.svg" />
-    <img class="quote-icon" src="../../assets/quote-open.svg" />
+    <font-awesome-icon icon="quote-left" />
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
       incididunt ut labore et dolore magna aliqua.
     </p>
-    <img class="quote-icon" src="../../assets/quote-close.svg" />
-    <img class="quote-icon" src="../../assets/quote-close.svg" />
+    <font-awesome-icon icon="quote-right" />
     <p>~ Author ~</p>
   </div>
 </template>

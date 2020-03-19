@@ -1,10 +1,10 @@
 <template>
   <div class="tags">
-    <img class="bracket-icon" src="../../assets/bracket-open.svg" />
+    <font-awesome-icon icon="chevron-left" />
     <div class="tags-container">
       <tag v-for="i in 4" :key="i.id" />
     </div>
-    <img class="bracket-icon" src="../../assets/bracket-close.svg" />
+    <font-awesome-icon icon="chevron-right" />
   </div>
 </template>
 
@@ -28,6 +28,7 @@ export default {
   margin: 2rem 0;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 .tags-container {
   display: flex;
