@@ -1,27 +1,36 @@
 <template>
   <div class="card">
-    <font-awesome-icon icon="quote-left" class="fa-2x quote-icon" />
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    </p>
-    <font-awesome-icon icon="quote-right" class="fa-2x quote-icon" />
+    <font-awesome-icon
+      icon="quote-left"
+      class="fa-2x quote-icon"
+      :class="{blue: index % 5 === 0, green: index % 4 === 0,  yellow: index % 3 === 0, orange: index % 2 === 0, pink: index % 1 === 0 }"
+    />
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
+    <font-awesome-icon
+      icon="quote-right"
+      class="fa-2x quote-icon"
+      :class="{blue: index % 5 === 0, green: index % 4 === 0,  yellow: index % 3 === 0, orange: index % 2 === 0, pink: index % 1 === 0 }"
+    />
     <p>~ Author ~</p>
     <div class="icon-container">
       <font-awesome-icon :icon="['fab', 'twitter']" class="fa-2x twitter-icon" />
     </div>
 
-    <div class="under-card"></div>
+    <div
+      class="under-card"
+      :class="{blue: index % 5 === 0, green: index % 4 === 0,  yellow: index % 3 === 0, orange: index % 2 === 0, pink: index % 1 === 0 }"
+    ></div>
   </div>
 </template>
 
 <script>
 export default {
-
+  props: ['index']
 }
 </script>
 
 <style lang="scss">
-@import '../../assets/base.scss';
+@import "../../assets/base.scss";
 
 .card {
   box-shadow: -1px 2px 5px #0000004f;
@@ -42,10 +51,41 @@ export default {
   width: 100%;
   left: 1rem;
   z-index: -1;
+
+  &.pink {
+    background-color: $light-pink;
+  }
+  &.orange {
+    background-color: $light-orange;
+  }
+  &.yellow {
+    background-color: $light-yellow;
+  }
+  &.green {
+    background-color: $light-green;
+  }
+  &.blue {
+    background-color: $light-blue;
+  }
 }
 .quote-icon {
   width: 2rem;
-  color: $light-pink;
+
+  &.pink {
+    color: $light-pink;
+  }
+  &.orange {
+    color: $light-orange;
+  }
+  &.yellow {
+    color: $light-yellow;
+  }
+  &.green {
+    color: $light-green;
+  }
+  &.blue {
+    color: $light-blue;
+  }
 }
 
 .icon-container {
