@@ -3,10 +3,8 @@
     <font-awesome-icon icon="quote-left" class="fa-2x quote-icon" />
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-      incididunt ut labore et dolore magna aliqua.
     </p>
     <font-awesome-icon icon="quote-right" class="fa-2x quote-icon" />
-
     <p>~ Author ~</p>
     <div class="icon-container">
       <font-awesome-icon :icon="['fab', 'twitter']" class="fa-2x twitter-icon" />
@@ -22,7 +20,9 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+@import '../../assets/base.scss';
+
 .card {
   box-shadow: -1px 2px 5px #0000004f;
   border-radius: 10%;
@@ -35,7 +35,7 @@ export default {
 
 .under-card {
   position: absolute;
-  background-color: pink;
+  background-color: $light-pink;
   border-radius: 10%;
   top: -1rem;
   height: 100%;
@@ -45,7 +45,7 @@ export default {
 }
 .quote-icon {
   width: 2rem;
-  color: pink;
+  color: $light-pink;
 }
 
 .icon-container {
