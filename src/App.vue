@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <SwitchTheme />
     <div class="container">
       <h1>
         Quotes
@@ -15,7 +16,7 @@
 
 <script>
 // import Tags from './components/Tags/Tags.vue'
-
+import SwitchTheme from './components/SwitchTheme.vue';
 import Cards from './components/Cards/Cards.vue'
 import 'animate.css'
 
@@ -23,6 +24,7 @@ export default {
   name: 'App',
   components: {
     // Tags,
+    SwitchTheme,
     Cards
   }
 }
