@@ -12,6 +12,8 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.config.productionTip = false
 
+export const EventBus = new Vue();
+
 new Vue({
   render: h => h(App),
 }).$mount('#app')

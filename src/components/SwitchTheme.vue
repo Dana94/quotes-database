@@ -12,12 +12,19 @@
 </template>
 
 <script>
+import { EventBus } from '../main';
+
 export default {
-    data() {
-        return {
-            lightTheme: true
-        }
+  data() {
+    return {
+      lightTheme: true
     }
+  },
+  watch: {
+    lightTheme() {
+      EventBus.$emit('theme-change', this.lightTheme ? 'light' : 'dark');
+    }
+  }
 }
 </script>
 

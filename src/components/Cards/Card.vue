@@ -17,17 +17,39 @@
         <font-awesome-icon :icon="['fab', 'twitter']" class="fa-2x twitter-icon" />
       </a>
     </div>
-
     <div
       class="under-card"
-      :class="{blue: index % 5 === 0, green: index % 4 === 0,  yellow: index % 3 === 0, orange: index % 2 === 0, pink: index % 1 === 0 }"
+      :class="pink"
     ></div>
+
+    <!-- <div
+      class="under-card"
+      :class="{blue: index % 5 === 0, green: index % 4 === 0,  yellow: index % 3 === 0, orange: index % 2 === 0, pink: index % 1 === 0 }"
+    ></div> -->
   </div>
 </template>
 
 <script>
+import { EventBus } from '../../main';
+
 export default {
-  props: ['index']
+  props: ['index'],
+  data() {
+    return {
+      theme: 'light',
+      pink: ''
+    }
+  },
+  mounted() {
+    EventBus.$on('theme-change', theme => {
+      this.theme = theme;
+      if(theme === 'light') {
+        this.pink = 'light-pink'
+      } else {
+        this.pink = 'dark-pink';
+      }
+    });
+  }
 }
 </script>
 
@@ -54,8 +76,11 @@ export default {
   left: 1rem;
   z-index: -1;
 
-  &.pink {
+  &.light-pink {
     background-color: $light-pink;
+  }
+  &.dark-pink {
+    background-color: #ff5767;
   }
   &.orange {
     background-color: $light-orange;
