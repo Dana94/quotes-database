@@ -13,7 +13,9 @@
     />
     <p>~ Author ~</p>
     <div class="icon-container">
-      <font-awesome-icon :icon="['fab', 'twitter']" class="fa-2x twitter-icon" />
+      <a href="#">
+        <font-awesome-icon :icon="['fab', 'twitter']" class="fa-2x twitter-icon" />
+      </a>
     </div>
 
     <div

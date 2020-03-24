@@ -48,10 +48,18 @@ export default {
 }
 
 h1 {
+  font-family: "Lobster", cursive;
   margin-bottom: 5rem;
+  font-size: 3rem;
 
   span {
     margin-left: 5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 4rem;
   }
 }
 </style>

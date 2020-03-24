@@ -1,7 +1,7 @@
 <template>
   <div class="theme-switch">
-    <font-awesome-icon :icon="['fas', 'sun']" class="fa-lg sun" v-show="lightTheme" />
-    <font-awesome-icon :icon="['fas', 'moon']" class="fa-lg moon" v-show="!lightTheme" />
+    <font-awesome-icon :icon="['fas', 'sun']" class="fa-lg sun" v-show="!lightTheme" />
+    <font-awesome-icon :icon="['fas', 'moon']" class="fa-lg moon" v-show="lightTheme" />
     <label class="switch">
       <input type="checkbox" @change="lightTheme = !lightTheme" />
       <span>
@@ -59,7 +59,7 @@ $lightGrey: #99a3ba;
         left: 0;
         width: 42px;
         height: 25px;
-        background: #e4ecfa;
+        background: #d7e0f1;
         transition: all 0.3s ease;
       }
       &:after {
