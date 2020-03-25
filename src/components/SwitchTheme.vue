@@ -12,7 +12,6 @@
 </template>
 
 <script>
-import { EventBus } from '../main';
 
 export default {
   data() {
@@ -22,7 +21,7 @@ export default {
   },
   watch: {
     lightTheme() {
-      EventBus.$emit('theme-change', this.lightTheme ? 'light' : 'dark');
+      this.$store.dispatch('setTheme', this.lightTheme ? 'light' : 'dark');
     }
   }
 }

@@ -18,7 +18,7 @@ export default new Vuex.Store({
     },
     actions: {
         setTheme({ commit }, theme) {
-            commit('SET_tHEME', theme);
+            commit('SET_THEME', theme);
         },
         setCardIndex({commit}, cardIndex) {
             commit('SET_CARD_INDEX', cardIndex);

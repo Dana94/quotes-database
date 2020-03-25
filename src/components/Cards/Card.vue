@@ -1,18 +1,22 @@
 <template>
   <div
     class="card"
-    :class="{grow: index === cardIndex, shrink: index !== cardIndex, hide: index !== cardIndex && cardIndex !== null}"
+    :class="{
+      grow: index === cardIndex && cardIndex !== null,
+      shrink: index !== cardIndex && cardIndex !== null,
+      hide: index !== cardIndex && cardIndex !== null
+    }"
   >
     <font-awesome-icon
       icon="quote-left"
       class="fa-2x quote-icon"
-      :class="{blue: index % 5 === 0, green: index % 4 === 0,  yellow: index % 3 === 0, orange: index % 2 === 0, pink: index % 1 === 0 }"
+      :class="{blue: index % 5 === 0, green: index % 4 === 0,  yellow: index % 3 === 0, orange: index % 2 === 0}"
     />
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
     <font-awesome-icon
       icon="quote-right"
       class="fa-2x quote-icon"
-      :class="{blue: index % 5 === 0, green: index % 4 === 0,  yellow: index % 3 === 0, orange: index % 2 === 0, pink: index % 1 === 0 }"
+      :class="{blue: index % 5 === 0, green: index % 4 === 0,  yellow: index % 3 === 0, orange: index % 2 === 0}"
     />
     <a href="#" @click="expandCard" class="show-more">
       Show
@@ -25,23 +29,22 @@
         <font-awesome-icon :icon="['fab', 'twitter']" class="fa-2x twitter-icon" />
       </a>
     </div>
-    <div class="under-card" :class="pink"></div>
+    <!-- <div class="under-card" :class="theme + '-pink'"></div> -->
 
-    <!-- <div
+    <div
       class="under-card"
-      :class="{blue: index % 5 === 0, green: index % 4 === 0,  yellow: index % 3 === 0, orange: index % 2 === 0, pink: index % 1 === 0 }"
-    ></div>-->
+      :class="{pink: index % 1 === 0 }"
+    ></div>
   </div>
 </template>
 
 <script>
-import { EventBus } from '../../main';
+// import { EventBus } from '../../main';
 
 export default {
   props: ['index'],
   data() {
     return {
-      pink: this.theme + '-pink',
       expand: false
     }
   },
@@ -64,16 +67,6 @@ export default {
     cardIndex() {
       return this.$store.getters.getCardIndex;
     }
-  },
-  mounted() {
-    EventBus.$on('theme-change', theme => {
-      this.theme = theme;
-      if(theme === 'light') {
-        this.pink = 'light-pink'
-      } else {
-        this.pink = 'dark-pink';
-      }
-    });
   }
 }
 </script>
@@ -108,7 +101,7 @@ export default {
 
 .under-card {
   position: absolute;
-  background-color: $light-pink;
+  // background-color: $light-pink;
   border-radius: 10%;
   top: -1rem;
   height: 100%;
