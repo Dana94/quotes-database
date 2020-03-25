@@ -1,5 +1,8 @@
 <template>
-  <div class="card" :class="{grow: expand, shrink: !expand}">
+  <div
+    class="card"
+    :class="{grow: index === cardIndex, shrink: index !== cardIndex, hide: index !== cardIndex && cardIndex !== null}"
+  >
     <font-awesome-icon
       icon="quote-left"
       class="fa-2x quote-icon"
@@ -38,14 +41,28 @@ export default {
   props: ['index'],
   data() {
     return {
-      theme: 'light',
-      pink: '',
-      expand: ''
+      pink: this.theme + '-pink',
+      expand: false
     }
   },
   methods: {
     expandCard() {
-      this.expand = !this.expand;
+      if(!this.expand) {
+        this.$store.dispatch('setCardIndex', this.index);
+        this.expand = true;
+      }
+      else {
+        this.expand = false;
+        this.$store.dispatch('setCardIndex', null);
+      }
+    }
+  },
+  computed: {
+    theme() {
+      return this.$store.getters.getTheme;
+    },
+    cardIndex() {
+      return this.$store.getters.getCardIndex;
     }
   },
   mounted() {

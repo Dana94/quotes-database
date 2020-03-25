@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
 
+import store from './store/store';
+
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faQuoteLeft, faQuoteRight, faChevronLeft, faChevronRight, faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
 import { faTwitter  } from '@fortawesome/free-brands-svg-icons'
@@ -15,5 +17,6 @@ Vue.config.productionTip = false
 export const EventBus = new Vue();
 
 new Vue({
+  store,
   render: h => h(App),
 }).$mount('#app')
