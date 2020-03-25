@@ -78,9 +78,6 @@ $lightGrey: #99a3ba;
         box-shadow: 0 1px 3px rgba(#121621, 0.1);
         transition: all 0.45s ease;
       }
-      // lock
-      em {
-      }
       strong {
         // font-weight: normal;
         // position: relative;
@@ -94,21 +91,21 @@ $lightGrey: #99a3ba;
           font-family: "Mukta Malar", Arial;
           -webkit-backface-visibility: hidden;
         }
-        &:before {
-          content: "Unlocked";
-          transition: all 0.3s ease 0.2s;
-        }
-        &:after {
-          content: "Locked";
-          opacity: 0;
-          visibility: hidden;
-          position: absolute;
-          left: 0;
-          top: 0;
-          color: $primary;
-          transition: all 0.3s ease;
-          transform: translate(2px, 0);
-        }
+        // &:before {
+        //   content: "Unlocked";
+        //   transition: all 0.3s ease 0.2s;
+        // }
+        // &:after {
+        //   content: "Locked";
+        //   opacity: 0;
+        //   visibility: hidden;
+        //   position: absolute;
+        //   left: 0;
+        //   top: 0;
+        //   color: $primary;
+        //   transition: all 0.3s ease;
+        //   transform: translate(2px, 0);
+        // }
       }
     }
     &:checked {

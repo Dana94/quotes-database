@@ -7,9 +7,23 @@ $light-green: #baffc9;
 $light-blue: #bae1ff;
 
 // dark theme
+$dark-bg: #2c3e50;
 $dark-pink: #FFB3E0; /* ? */
+// need changing
+$dark-orange: #ffdfba;
+$dark-yellow: #ffffba;
+$dark-green: #baffc9;
+$dark-blue: #bae1ff;
 
 body {
     background-color: $light-bg;
+
+    &.light {
+        background-color: $light-bg;
+    }
+
+    &.dark {
+        background-color: $dark-bg;
+    }
 }
 
