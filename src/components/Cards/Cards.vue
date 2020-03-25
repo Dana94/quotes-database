@@ -4,7 +4,7 @@
     mode="out-in"
   >
     <div class="cards" v-if="showCards">
-      <card v-for="i in 1" :key="i.id" :index="i"/>
+      <card v-for="i in 13" :key="i.id" :index="i"/>
     </div>
   </transition>
 </template>
@@ -33,11 +33,14 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
 .cards {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  grid-template-rows: 1fr;
-  column-gap: 2rem;
-  row-gap: 3rem;
+  // display: grid;
+  // grid-template-columns: repeat(1, 1fr);
+  // grid-template-rows: 1fr;
+  // column-gap: 2rem;
+  // row-gap: 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 @media (min-width: 768px) {

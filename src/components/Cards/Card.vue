@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card" :class="{grow: expand, shrink: !expand}">
     <font-awesome-icon
       icon="quote-left"
       class="fa-2x quote-icon"
@@ -11,21 +11,23 @@
       class="fa-2x quote-icon"
       :class="{blue: index % 5 === 0, green: index % 4 === 0,  yellow: index % 3 === 0, orange: index % 2 === 0, pink: index % 1 === 0 }"
     />
+    <a href="#" @click="expandCard" class="show-more">
+      Show
+      <span v-if="!expand">More</span>
+      <span v-else>Less</span>
+    </a>
     <p>~ Author ~</p>
     <div class="icon-container">
       <a href="#">
         <font-awesome-icon :icon="['fab', 'twitter']" class="fa-2x twitter-icon" />
       </a>
     </div>
-    <div
-      class="under-card"
-      :class="pink"
-    ></div>
+    <div class="under-card" :class="pink"></div>
 
     <!-- <div
       class="under-card"
       :class="{blue: index % 5 === 0, green: index % 4 === 0,  yellow: index % 3 === 0, orange: index % 2 === 0, pink: index % 1 === 0 }"
-    ></div> -->
+    ></div>-->
   </div>
 </template>
 
@@ -37,7 +39,13 @@ export default {
   data() {
     return {
       theme: 'light',
-      pink: ''
+      pink: '',
+      expand: ''
+    }
+  },
+  methods: {
+    expandCard() {
+      this.expand = !this.expand;
     }
   },
   mounted() {
@@ -62,8 +70,23 @@ export default {
   padding: 1rem;
   position: relative;
   background-color: white;
-  max-width: 20rem;
   margin: 0 auto;
+
+  width: 20rem;
+  margin-bottom: 3rem;
+  margin: 1rem 2rem;
+
+  &.grow {
+    animation: grow 1s forwards;
+  }
+
+  &.shrink {
+    animation: shrink 1s forwards;
+  }
+
+  &.hide {
+    display: none;
+  }
 }
 
 .under-card {
@@ -130,9 +153,31 @@ export default {
   right: 1rem; */
 }
 
+a.show-more {
+  display: block;
+}
+
 @media (min-width: 768px) {
   .quote-icon {
     width: 3rem;
+  }
+}
+
+@keyframes grow {
+  0% {
+    width: 20rem;
+  }
+  100% {
+    width: 80%;
+  }
+}
+
+@keyframes shrink {
+  0% {
+    width: 80%;
+  }
+  100% {
+    width: 20rem;
   }
 }
 </style>
