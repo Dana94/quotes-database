@@ -5,15 +5,16 @@ $light-orange: #ffdfba;
 $light-yellow: #ffffba;
 $light-green: #baffc9;
 $light-blue: #bae1ff;
+$light-card: #ffffff;
 
 // dark theme
-$dark-bg: #2c3e50;
-$dark-pink: #FFB3E0; /* ? */
-// need changing
-$dark-orange: #ffdfba;
-$dark-yellow: #ffffba;
-$dark-green: #baffc9;
-$dark-blue: #bae1ff;
+$dark-bg: #0d2538; /* #2c3e50; ? */
+$dark-pink: #ff5767; /*  #FFB3E0? */
+$dark-orange: #ffbc6e;
+$dark-yellow: #ffff6e;
+$dark-green: #6eff8d;
+$dark-blue: #6ec0ff;
+$dark-card: #0f2d44;
 
 body {
     background-color: $light-bg;

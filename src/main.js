@@ -14,8 +14,6 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.config.productionTip = false
 
-export const EventBus = new Vue();
-
 new Vue({
   store,
   render: h => h(App),

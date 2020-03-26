@@ -5,10 +5,8 @@
       <h1>
         Quotes
         <br />
-
         <span>Database</span>
       </h1>
-      <!-- <Tags /> -->
       <Cards />
     </div>
   </div>
@@ -38,7 +36,6 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
   margin-top: 60px;
 }
 

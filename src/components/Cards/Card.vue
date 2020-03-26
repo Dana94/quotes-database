@@ -10,13 +10,25 @@
     <font-awesome-icon
       icon="quote-left"
       class="fa-2x quote-icon"
-      :class="{blue: index % 5 === 0, green: index % 4 === 0,  yellow: index % 3 === 0, orange: index % 2 === 0}"
+      :class="[
+        index % 5 === 0 ? blue :
+        index % 4 === 0 ? green :
+        index % 3 === 0 ? yellow :
+        index % 2 === 0 ? orange :
+        pink
+      ]"
     />
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
     <font-awesome-icon
       icon="quote-right"
       class="fa-2x quote-icon"
-      :class="{blue: index % 5 === 0, green: index % 4 === 0,  yellow: index % 3 === 0, orange: index % 2 === 0}"
+      :class="[
+        index % 5 === 0 ? blue :
+        index % 4 === 0 ? green :
+        index % 3 === 0 ? yellow :
+        index % 2 === 0 ? orange :
+        pink
+      ]"
     />
     <a href="#" @click="expandCard" class="show-more">
       Show
@@ -33,19 +45,24 @@
 
     <div
       class="under-card"
-      :class="{pink: index % 1 === 0 }"
+      :class="[
+        index % 5 === 0 ? blue :
+        index % 4 === 0 ? green :
+        index % 3 === 0 ? yellow :
+        index % 2 === 0 ? orange :
+        pink
+      ]"
     ></div>
   </div>
 </template>
 
 <script>
-// import { EventBus } from '../../main';
 
 export default {
   props: ['index'],
   data() {
     return {
-      expand: false
+      expand: false,
     }
   },
   methods: {
@@ -63,6 +80,36 @@ export default {
   computed: {
     theme() {
       return this.$store.getters.getTheme;
+    },
+    pink() {
+      if (!this.theme) {
+        return;
+      }
+      return this.theme + '-pink';
+    },
+    orange() {
+      if (!this.theme) {
+        return;
+      }
+      return this.theme + '-orange';
+    },
+    yellow() {
+      if (!this.theme) {
+        return;
+      }
+      return this.theme + '-yellow';
+    },
+    green() {
+      if (!this.theme) {
+        return;
+      }
+      return this.theme + '-green';
+    },
+    blue() {
+      if (!this.theme) {
+        return;
+      }
+      return this.theme + '-blue';
     },
     cardIndex() {
       return this.$store.getters.getCardIndex;
@@ -113,38 +160,65 @@ export default {
     background-color: $light-pink;
   }
   &.dark-pink {
-    background-color: #ff5767;
+    background-color: $dark-pink;
   }
-  &.orange {
+  &.light-orange {
     background-color: $light-orange;
   }
-  &.yellow {
+  &.dark-orange {
+    background-color: $dark-orange;
+  }
+  &.light-yellow {
     background-color: $light-yellow;
   }
-  &.green {
+  &.dark-yellow {
+    background-color: $dark-yellow;
+  }
+  &.light-green {
     background-color: $light-green;
   }
-  &.blue {
+  &.dark-green {
+    background-color: $dark-green;
+  }
+  &.light-blue {
     background-color: $light-blue;
+  }
+  &.dark-blue {
+    background-color: $dark-blue;
   }
 }
 .quote-icon {
   width: 2rem;
 
-  &.pink {
+  &.light-pink {
     color: $light-pink;
   }
-  &.orange {
+  &.dark-pink {
+    color: $dark-pink;
+  }
+  &.light-orange {
     color: $light-orange;
   }
-  &.yellow {
+  &.dark-orange {
+    color: $dark-orange;
+  }
+  &.light-yellow {
     color: $light-yellow;
   }
-  &.green {
+  &.dark-yellow {
+    color: $dark-yellow;
+  }
+  &.light-green {
     color: $light-green;
   }
-  &.blue {
+  &.dark-green {
+    color: $dark-green;
+  }
+  &.light-blue {
     color: $light-blue;
+  }
+  &.dark-blue {
+    color: $dark-blue;
   }
 }
 
