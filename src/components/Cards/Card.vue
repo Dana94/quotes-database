@@ -148,7 +148,6 @@ export default {
 
 .under-card {
   position: absolute;
-  // background-color: $light-pink;
   border-radius: 10%;
   top: -1rem;
   height: 100%;

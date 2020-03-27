@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <SwitchTheme />
+    <Toolbar />
     <div class="container">
       <h1>
         Quotes
@@ -14,7 +14,7 @@
 
 <script>
 // import Tags from './components/Tags/Tags.vue'
-import SwitchTheme from './components/SwitchTheme.vue';
+import Toolbar from './Layout/Toolbar.vue';
 import Cards from './components/Cards/Cards.vue'
 import 'animate.css'
 
@@ -22,7 +22,7 @@ export default {
   name: 'App',
   components: {
     // Tags,
-    SwitchTheme,
+    Toolbar,
     Cards
   }
 }
@@ -36,7 +36,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  margin-top: 60px;
+  // margin-top: 60px;
 }
 
 .container {

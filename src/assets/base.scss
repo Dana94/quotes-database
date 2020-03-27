@@ -18,6 +18,7 @@ $dark-card: #0f2d44;
 
 body {
     background-color: $light-bg;
+    margin: 0;
 
     &.light {
         background-color: $light-bg;

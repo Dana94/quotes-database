@@ -31,9 +31,7 @@ export default {
 $primary: #5628ee;
 $lightGrey: #99a3ba;
 .theme-switch {
-  position: absolute;
-  right: 4rem;
-  top: 1rem;
+  margin-right: 3rem;
   display: flex;
   align-items: center;
 }
