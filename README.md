@@ -1,5 +1,7 @@
 # quotes-database
 
+> A work-in-progress.
+
 ## Project setup
 ```
 npm install
