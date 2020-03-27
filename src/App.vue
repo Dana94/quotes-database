@@ -36,6 +36,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+  background-color: $light-bg;
   // margin-top: 60px;
 }
 
@@ -58,5 +59,17 @@ h1 {
   h1 {
     font-size: 4rem;
   }
+}
+
+// testing
+body {
+  // height: 100vh;
+  margin: 0;
+  padding: 0px;
+
+  width: 100%;
+}
+#app {
+  height: 100%;
 }
 </style>

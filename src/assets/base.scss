@@ -17,15 +17,15 @@ $dark-blue: #6ec0ff;
 $dark-card: #0f2d44;
 
 body {
-    background-color: $light-bg;
+    // background-color: $light-bg;
     margin: 0;
 
-    &.light {
-        background-color: $light-bg;
-    }
+    // &.light {
+    //     background-color: $light-bg;
+    // }
 
-    &.dark {
-        background-color: $dark-bg;
-    }
+    // &.dark {
+    //     background-color: $dark-bg;
+    // }
 }
 

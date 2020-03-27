@@ -7,42 +7,6 @@
       hide: index !== cardIndex && cardIndex !== null
     }"
   >
-    <font-awesome-icon
-      icon="quote-left"
-      class="fa-2x quote-icon"
-      :class="[
-        index % 5 === 0 ? blue :
-        index % 4 === 0 ? green :
-        index % 3 === 0 ? yellow :
-        index % 2 === 0 ? orange :
-        pink
-      ]"
-    />
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
-    <font-awesome-icon
-      icon="quote-right"
-      class="fa-2x quote-icon"
-      :class="[
-        index % 5 === 0 ? blue :
-        index % 4 === 0 ? green :
-        index % 3 === 0 ? yellow :
-        index % 2 === 0 ? orange :
-        pink
-      ]"
-    />
-    <a href="#" @click="expandCard" class="show-more">
-      Show
-      <span v-if="!expand">More</span>
-      <span v-else>Less</span>
-    </a>
-    <p>~ Author ~</p>
-    <div class="icon-container">
-      <a href="#">
-        <font-awesome-icon :icon="['fab', 'twitter']" class="fa-2x twitter-icon" />
-      </a>
-    </div>
-    <!-- <div class="under-card" :class="theme + '-pink'"></div> -->
-
     <div
       class="under-card"
       :class="[
@@ -53,6 +17,43 @@
         pink
       ]"
     ></div>
+    <div class="primary-card">
+      <font-awesome-icon
+        icon="quote-left"
+        class="fa-2x quote-icon"
+        :class="[
+        index % 5 === 0 ? blue :
+        index % 4 === 0 ? green :
+        index % 3 === 0 ? yellow :
+        index % 2 === 0 ? orange :
+        pink
+      ]"
+      />
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
+      <font-awesome-icon
+        icon="quote-right"
+        class="fa-2x quote-icon"
+        :class="[
+        index % 5 === 0 ? blue :
+        index % 4 === 0 ? green :
+        index % 3 === 0 ? yellow :
+        index % 2 === 0 ? orange :
+        pink
+      ]"
+      />
+      <a href="#" @click="expandCard" class="show-more">
+        Show
+        <span v-if="!expand">More</span>
+        <span v-else>Less</span>
+      </a>
+      <p>~ Author ~</p>
+      <div class="icon-container">
+        <a href="#">
+          <font-awesome-icon :icon="['fab', 'twitter']" class="fa-2x twitter-icon" />
+        </a>
+      </div>
+      <!-- <div class="under-card" :class="theme + '-pink'"></div> -->
+    </div>
   </div>
 </template>
 
@@ -122,16 +123,11 @@ export default {
 @import "../../assets/base.scss";
 
 .card {
-  box-shadow: -1px 2px 5px #0000004f;
-  border-radius: 10%;
-  padding: 1rem;
   position: relative;
-  background-color: white;
-  margin: 0 auto;
-
+  margin-bottom: 3rem;
   width: 20rem;
   margin-bottom: 3rem;
-  margin: 1rem 2rem;
+  margin: 2rem 3rem;
 
   &.grow {
     animation: grow 1s forwards;
@@ -146,14 +142,23 @@ export default {
   }
 }
 
+.primary-card {
+  box-shadow: -1px 2px 5px #0000004f;
+  border-radius: 10%;
+  padding: 1rem;
+  position: relative;
+  background-color: white;
+  margin: 0 auto;
+  width: 100%;
+}
+
 .under-card {
   position: absolute;
   border-radius: 10%;
   top: -1rem;
   height: 100%;
   width: 100%;
-  left: 1rem;
-  z-index: -1;
+  right: -3rem;
 
   &.light-pink {
     background-color: $light-pink;
