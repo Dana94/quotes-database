@@ -1,5 +1,5 @@
 <template>
-  <nav>
+  <nav :class="{dark: theme === 'dark'}">
     <SwitchTheme />
   </nav>
 </template>
@@ -8,13 +8,20 @@
 import SwitchTheme from '../components/SwitchTheme.vue';
 
 export default {
-    components: {
-        SwitchTheme
-    }
+  computed: {
+    theme() {
+      return this.$store.getters.getTheme;
+    },
+  },
+  components: {
+      SwitchTheme
+  }
 }
 </script>
 
 <style lang="scss" scoped>
+@import "../assets/base.scss";
+
 nav {
   background-color: #d6e7f3;
   box-shadow: 0px 3px 7px black;
@@ -25,5 +32,9 @@ nav {
   display: flex;
   padding: 0 0.5rem;
   justify-content: flex-end;
+
+  &.dark {
+    background-color: $dark-card;
+  }
 }
 </style>
