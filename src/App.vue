@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" :class="{light: theme === 'light', dark: theme === 'dark'}">
     <Toolbar />
     <div class="container">
       <h1>
@@ -20,6 +20,11 @@ import 'animate.css'
 
 export default {
   name: 'App',
+  computed: {
+    theme() {
+      return this.$store.getters.getTheme;
+    },
+  },
   components: {
     // Tags,
     Toolbar,
@@ -36,7 +41,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  background-color: $light-bg;
+
   // margin-top: 60px;
 }
 
@@ -63,13 +68,19 @@ h1 {
 
 // testing
 body {
-  // height: 100vh;
-  margin: 0;
-  padding: 0px;
-
-  width: 100%;
+  // margin: 0;
+  // padding: 0px;
+  // width: 100%;
 }
 #app {
   height: 100%;
+
+  &.light {
+    background-color: $light-bg;
+  }
+
+  &.dark {
+    background-color: $dark-bg;
+  }
 }
 </style>

@@ -4,7 +4,8 @@
     :class="{
       grow: index === cardIndex && cardIndex !== null,
       shrink: index !== cardIndex && cardIndex !== null,
-      hide: index !== cardIndex && cardIndex !== null
+      hide: index !== cardIndex && cardIndex !== null,
+      dark: theme === 'dark'
     }"
   >
     <div
@@ -140,6 +141,14 @@ export default {
   &.hide {
     display: none;
   }
+
+  &.dark {
+    color: $dark-card-text;
+
+    .primary-card {
+      background-color: $dark-card;
+    }
+  }
 }
 
 .primary-card {
@@ -147,7 +156,7 @@ export default {
   border-radius: 10%;
   padding: 1rem;
   position: relative;
-  background-color: white;
+  background-color: $light-card;
   margin: 0 auto;
   width: 100%;
 }
@@ -237,12 +246,11 @@ export default {
 
 .twitter-icon:hover {
   cursor: pointer;
-  /* position: absolute;
-  right: 1rem; */
 }
 
 a.show-more {
   display: block;
+  margin: 1rem 0;
 }
 
 @media (min-width: 768px) {

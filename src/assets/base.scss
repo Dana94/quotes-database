@@ -15,17 +15,12 @@ $dark-yellow: #ffff6e;
 $dark-green: #6eff8d;
 $dark-blue: #6ec0ff;
 $dark-card: #0f2d44;
+$dark-card-text: #ffffff;
 
 body {
-    // background-color: $light-bg;
     margin: 0;
-
-    // &.light {
-    //     background-color: $light-bg;
-    // }
-
-    // &.dark {
-    //     background-color: $dark-bg;
-    // }
+    margin: 0;
+    padding: 0px;
+    width: 100%;
 }
 
