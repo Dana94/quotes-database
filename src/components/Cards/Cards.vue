@@ -4,7 +4,7 @@
     mode="out-in"
   >
     <div class="cards" v-if="showCards">
-      <card v-for="i in 13" :key="i" :index="i"/>
+      <card v-for="i in 8" :key="i" :index="i"/>
     </div>
   </transition>
 </template>

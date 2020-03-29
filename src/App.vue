@@ -81,6 +81,10 @@ body {
 
   &.dark {
     background-color: $dark-bg;
+
+    h1 {
+      color: $light-bg;
+    }
   }
 }
 </style>

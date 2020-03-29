@@ -2,8 +2,8 @@
   <div
     class="card"
     :class="{
-      grow: index === cardIndex && cardIndex !== null,
-      shrink: index !== cardIndex && cardIndex !== null,
+      grow: index === cardIndex,
+      shrink: index !== cardIndex && cardIndex === null,
       hide: index !== cardIndex && cardIndex !== null,
       dark: theme === 'dark'
     }"
@@ -56,7 +56,6 @@
           <font-awesome-icon :icon="['fab', 'twitter']" class="fa-2x twitter-icon" />
         </a>
       </div>
-      <!-- <div class="under-card" :class="theme + '-pink'"></div> -->
     </div>
   </div>
 </template>
@@ -79,6 +78,8 @@ export default {
       else {
         this.expand = false;
         this.$store.dispatch('setCardIndex', null);
+
+        // delay other cards from showing until the one last expanded is done shrinkng
       }
     }
   },
