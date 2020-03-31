@@ -1,14 +1,12 @@
 <template>
-  <div id="app">
-    <SwitchTheme />
+  <div id="app" :class="{light: theme === 'light', dark: theme === 'dark'}">
+    <Toolbar />
     <div class="container">
       <h1>
         Quotes
         <br />
-
         <span>Database</span>
       </h1>
-      <!-- <Tags /> -->
       <Cards />
     </div>
   </div>
@@ -16,15 +14,20 @@
 
 <script>
 // import Tags from './components/Tags/Tags.vue'
-import SwitchTheme from './components/SwitchTheme.vue';
+import Toolbar from './Layout/Toolbar.vue';
 import Cards from './components/Cards/Cards.vue'
 import 'animate.css'
 
 export default {
   name: 'App',
+  computed: {
+    theme() {
+      return this.$store.getters.getTheme;
+    },
+  },
   components: {
     // Tags,
-    SwitchTheme,
+    Toolbar,
     Cards
   }
 }
@@ -38,8 +41,8 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+
+  // margin-top: 60px;
 }
 
 .container {
@@ -60,6 +63,28 @@ h1 {
 @media (min-width: 768px) {
   h1 {
     font-size: 4rem;
+  }
+}
+
+// testing
+body {
+  // margin: 0;
+  // padding: 0px;
+  // width: 100%;
+}
+#app {
+  height: 100%;
+
+  &.light {
+    background-color: $light-bg;
+  }
+
+  &.dark {
+    background-color: $dark-bg;
+
+    h1 {
+      color: $light-bg;
+    }
   }
 }
 </style>

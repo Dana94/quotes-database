@@ -1,15 +1,26 @@
 // light theme
 $light-bg: #fafdff;
-$light-pink: #ffb3ba;
+$light-red: #ffb3ba;
 $light-orange: #ffdfba;
 $light-yellow: #ffffba;
 $light-green: #baffc9;
 $light-blue: #bae1ff;
+$light-card: #ffffff;
 
 // dark theme
-$dark-pink: #FFB3E0; /* ? */
+$dark-bg: #0d2538;
+$dark-card: #0f2d44;
+$dark-card-text: #ffffff;
+$dark-pink: #F4A4EA;
+$dark-purple: #777EF4;
+$dark-red: #F46190;
+$dark-green: #A4EDA3;
+$dark-blue: #68FFD6;
 
 body {
-    background-color: $light-bg;
+    margin: 0;
+    margin: 0;
+    padding: 0px;
+    width: 100%;
 }
 

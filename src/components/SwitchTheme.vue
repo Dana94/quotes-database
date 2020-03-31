@@ -1,7 +1,7 @@
 <template>
   <div class="theme-switch">
-    <font-awesome-icon :icon="['fas', 'sun']" class="fa-lg sun" v-show="!lightTheme" />
-    <font-awesome-icon :icon="['fas', 'moon']" class="fa-lg moon" v-show="lightTheme" />
+    <font-awesome-icon :icon="['fas', 'sun']" class="fa-lg sun" v-show="lightTheme" />
+    <font-awesome-icon :icon="['fas', 'moon']" class="fa-lg moon" v-show="!lightTheme" />
     <label class="switch">
       <input type="checkbox" @change="lightTheme = !lightTheme" />
       <span>
@@ -12,28 +12,34 @@
 </template>
 
 <script>
+
 export default {
-    data() {
-        return {
-            lightTheme: true
-        }
+  data() {
+    return {
+      lightTheme: true
     }
+  },
+  watch: {
+    lightTheme() {
+      this.$store.dispatch('setTheme', this.lightTheme ? 'light' : 'dark');
+    }
+  }
 }
 </script>
 
 <style lang="scss">
-$primary: #5628ee;
-$lightGrey: #99a3ba;
+$dark: #c5b9ef59;
+$light: #abc8ff;
+$white: #ffffff;
+
 .theme-switch {
-  position: absolute;
-  right: 4rem;
-  top: 1rem;
+  margin-right: 3rem;
   display: flex;
   align-items: center;
 }
 
 .moon {
-  color: #565656;
+  color: aliceblue;
 }
 .sun {
   color: orange;
@@ -59,80 +65,34 @@ $lightGrey: #99a3ba;
         left: 0;
         width: 42px;
         height: 25px;
-        background: #d7e0f1;
+        background: $light;
         transition: all 0.3s ease;
       }
       &:after {
         width: 18px;
         height: 18px;
-        background: #fff;
+        background: $white;
         top: 3px;
         left: 3px;
         box-shadow: 0 1px 3px rgba(#121621, 0.1);
         transition: all 0.45s ease;
       }
-      // lock
-      em {
-      }
-      strong {
-        // font-weight: normal;
-        // position: relative;
-        // display: block;
-        // top: 1px;
-        &:before,
-        &:after {
-          font-size: 14px;
-          font-weight: 500;
-          display: block;
-          font-family: "Mukta Malar", Arial;
-          -webkit-backface-visibility: hidden;
-        }
-        &:before {
-          content: "Unlocked";
-          transition: all 0.3s ease 0.2s;
-        }
-        &:after {
-          content: "Locked";
-          opacity: 0;
-          visibility: hidden;
-          position: absolute;
-          left: 0;
-          top: 0;
-          color: $primary;
-          transition: all 0.3s ease;
-          transform: translate(2px, 0);
-        }
-      }
     }
     &:checked {
       & + span {
         &:before {
-          background: rgba($primary, 0.35);
+          background: rgba($dark, 0.35);
         }
         &:after {
-          background: #fff;
+          background: $white;
           transform: translate(18px, 0);
         }
         em {
           transform: translate(18px, 0);
-          background: $primary;
+          background: $dark;
           &:after {
-            border-color: $primary;
+            border-color: $dark;
             transform: rotate(0deg) translate(0, 0);
-          }
-        }
-        strong {
-          &:before {
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            transform: translate(-2px, 0);
-          }
-          &:after {
-            opacity: 1;
-            visibility: visible;
-            transform: translate(0, 0);
-            transition: all 0.3s ease 0.2s;
           }
         }
       }
