@@ -29,3 +29,7 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### Acknowledgments
+- [CodePen](https://codepen.io/aaroniker/pen/XxPNqY) that I used as the starter code for the theme switch.
+
