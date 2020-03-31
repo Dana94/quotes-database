@@ -10,25 +10,29 @@
   >
     <div
       class="under-card"
-      :class="[
-        index % 5 === 0 ? blue :
-        index % 4 === 0 ? green :
-        index % 3 === 0 ? yellow :
-        index % 2 === 0 ? orange :
-        pink
-      ]"
+      :class="{
+        blue: index % 5 === 0,
+        green: index % 4 === 0,
+        yellow: index % 3 === 0,
+        purple: index % 3 === 0,
+        orange: index % 2 === 0,
+        pink: index % 2 === 0,
+        red: index < 2 || index % 1 === 0
+      }"
     ></div>
     <div class="primary-card">
       <font-awesome-icon
         icon="quote-left"
         class="fa-2x quote-icon"
-        :class="[
-        index % 5 === 0 ? blue :
-        index % 4 === 0 ? green :
-        index % 3 === 0 ? yellow :
-        index % 2 === 0 ? orange :
-        pink
-      ]"
+        :class="{
+          blue: index % 5 === 0,
+          green: index % 4 === 0,
+          yellow: index % 3 === 0,
+          purple: index % 3 === 0,
+          orange: index % 2 === 0,
+          pink: index % 2 === 0,
+          red: index < 2 || index % 1 === 0
+        }"
       />
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet,
@@ -37,13 +41,15 @@
       <font-awesome-icon
         icon="quote-right"
         class="fa-2x quote-icon"
-        :class="[
-        index % 5 === 0 ? blue :
-        index % 4 === 0 ? green :
-        index % 3 === 0 ? yellow :
-        index % 2 === 0 ? orange :
-        pink
-      ]"
+        :class="{
+          blue: index % 5 === 0,
+          green: index % 4 === 0,
+          yellow: index % 3 === 0,
+          purple: index % 3 === 0,
+          orange: index % 2 === 0,
+          pink: index % 2 === 0,
+          red: index < 2 || index % 1 === 0
+        }"
       />
       <a href="#" @click="expandCard" class="show-more">
         Show
@@ -87,36 +93,6 @@ export default {
     theme() {
       return this.$store.getters.getTheme;
     },
-    pink() {
-      if (!this.theme) {
-        return;
-      }
-      return this.theme + '-pink';
-    },
-    orange() {
-      if (!this.theme) {
-        return;
-      }
-      return this.theme + '-orange';
-    },
-    yellow() {
-      if (!this.theme) {
-        return;
-      }
-      return this.theme + '-yellow';
-    },
-    green() {
-      if (!this.theme) {
-        return;
-      }
-      return this.theme + '-green';
-    },
-    blue() {
-      if (!this.theme) {
-        return;
-      }
-      return this.theme + '-blue';
-    },
     cardIndex() {
       return this.$store.getters.getCardIndex;
     }
@@ -146,11 +122,48 @@ export default {
     display: none;
   }
 
+  // changes in dark theme
   &.dark {
     color: $dark-card-text;
 
     .primary-card {
       background-color: $dark-card;
+
+      .quote-icon {
+        &.red {
+          color: $dark-red;
+        }
+        &.green {
+          color: $dark-green;
+        }
+        &.blue {
+          color: $dark-blue;
+        }
+        &.pink {
+          color: $dark-pink;
+        }
+        &.purple {
+          color: $dark-purple;
+        }
+      }
+    }
+
+    .under-card {
+      &.red {
+        background-color: $dark-red;
+      }
+      &.green {
+        background-color: $dark-green;
+      }
+      &.blue {
+        background-color: $dark-blue;
+      }
+      &.pink {
+        background-color: $dark-pink;
+      }
+      &.purple {
+        background-color: $dark-purple;
+      }
     }
   }
 }
@@ -173,69 +186,40 @@ export default {
   width: 100%;
   right: -3rem;
 
-  &.light-pink {
-    background-color: $light-pink;
+  &.red {
+    background-color: $light-red;
   }
-  &.dark-pink {
-    background-color: $dark-pink;
-  }
-  &.light-orange {
+  &.orange {
     background-color: $light-orange;
   }
-  &.dark-orange {
-    background-color: $dark-orange;
-  }
-  &.light-yellow {
+  &.yellow {
     background-color: $light-yellow;
   }
-  &.dark-yellow {
-    background-color: $dark-yellow;
-  }
-  &.light-green {
+  &.green {
     background-color: $light-green;
   }
-  &.dark-green {
-    background-color: $dark-green;
-  }
-  &.light-blue {
+  &.blue {
     background-color: $light-blue;
   }
-  &.dark-blue {
-    background-color: $dark-blue;
-  }
 }
+
 .quote-icon {
   width: 2rem;
 
-  &.light-pink {
-    color: $light-pink;
+  &.red {
+    color: $light-red;
   }
-  &.dark-pink {
-    color: $dark-pink;
-  }
-  &.light-orange {
+  &.orange {
     color: $light-orange;
   }
-  &.dark-orange {
-    color: $dark-orange;
-  }
-  &.light-yellow {
+  &.yellow {
     color: $light-yellow;
   }
-  &.dark-yellow {
-    color: $dark-yellow;
-  }
-  &.light-green {
+  &.green {
     color: $light-green;
   }
-  &.dark-green {
-    color: $dark-green;
-  }
-  &.light-blue {
+  &.blue {
     color: $light-blue;
-  }
-  &.dark-blue {
-    color: $dark-blue;
   }
 }
 
