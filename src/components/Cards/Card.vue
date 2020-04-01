@@ -51,14 +51,14 @@
           red: index < 2 || index % 1 === 0
         }"
       />
-      <a href="#" @click="expandCard" class="show-more">
+      <a href="#" @click="expandCard" class="show-more" tabindex="-1">
         Show
         <span v-if="!expand">More</span>
         <span v-else>Less</span>
       </a>
       <p>~ Author ~</p>
       <div class="icon-container">
-        <a href="#">
+        <a href="#" tabindex="-1">
           <font-awesome-icon :icon="['fab', 'twitter']" class="fa-2x twitter-icon" />
         </a>
       </div>

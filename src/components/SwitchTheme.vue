@@ -4,7 +4,7 @@
     <font-awesome-icon :icon="['fas', 'moon']" class="fa-lg moon" v-show="!lightTheme" />
     <label class="switch">
       <input type="checkbox" @change="lightTheme = !lightTheme" />
-      <span>
+      <span tabindex="0">
         <em></em>
       </span>
     </label>
@@ -59,6 +59,10 @@ $white: #ffffff;
         display: block;
         position: absolute;
         border-radius: 12px;
+
+        &:focus {
+          outline: blue;
+        }
       }
       &:before {
         top: 0;
