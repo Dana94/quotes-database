@@ -1,9 +1,7 @@
 <template>
   <div class="theme-switch">
-    <a href="#" @click.prevent="toggleTheme('light')">
+    <a href="#" @click.prevent="toggleTheme">
       <font-awesome-icon :icon="['fas', 'sun']" class="fa-lg sun" v-show="theme === 'dark'" />
-    </a>
-    <a href="#" @click.prevent="toggleTheme('dark')">
       <font-awesome-icon :icon="['fas', 'moon']" class="fa-lg moon" v-show="theme === 'light'" />
     </a>
   </div>
@@ -18,10 +16,10 @@ export default {
     }
   },
   methods: {
-    toggleTheme (theme) {
-      this.theme = theme;
+    toggleTheme () {
+      this.theme = this.theme === 'light' ? 'dark' : 'light';
       console.log(this.theme)
-      this.$store.dispatch('setTheme', theme);
+      this.$store.dispatch('setTheme', this.theme);
     }
   }
 }
@@ -39,7 +37,7 @@ $white: #ffffff;
 }
 
 .moon {
-  color: aliceblue;
+  color: #3f51b5;
 }
 .sun {
   color: orange;
