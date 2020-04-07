@@ -2,20 +2,20 @@
   <div
     class="card"
     :class="{
-      hide: index !== cardIndex && cardIndex !== null,
+      hide: id !== cardIndex && cardIndex !== null,
       dark: theme === 'dark'
     }"
   >
     <div
       class="under-card"
       :class="{
-        blue: index % 5 === 0,
-        green: index % 4 === 0,
-        yellow: index % 3 === 0,
-        purple: index % 3 === 0,
-        orange: index % 2 === 0,
-        pink: index % 2 === 0,
-        red: index < 2 || index % 1 === 0
+        blue: id % 5 === 0,
+        green: id % 4 === 0,
+        yellow: id % 3 === 0,
+        purple: id % 3 === 0,
+        orange: id % 2 === 0,
+        pink: id % 2 === 0,
+        red: id < 2 || id % 1 === 0
       }"
     ></div>
     <div class="primary-card">
@@ -23,37 +23,37 @@
         icon="quote-left"
         class="fa-2x quote-icon"
         :class="{
-          blue: index % 5 === 0,
-          green: index % 4 === 0,
-          yellow: index % 3 === 0,
-          purple: index % 3 === 0,
-          orange: index % 2 === 0,
-          pink: index % 2 === 0,
-          red: index < 2 || index % 1 === 0
+          blue: id % 5 === 0,
+          green: id % 4 === 0,
+          yellow: id % 3 === 0,
+          purple: id % 3 === 0,
+          orange: id % 2 === 0,
+          pink: id % 2 === 0,
+          red: id < 2 || id % 1 === 0
         }"
       />
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet,
-        consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+        {{quote}}
       </p>
       <font-awesome-icon
         icon="quote-right"
         class="fa-2x quote-icon"
         :class="{
-          blue: index % 5 === 0,
-          green: index % 4 === 0,
-          yellow: index % 3 === 0,
-          purple: index % 3 === 0,
-          orange: index % 2 === 0,
-          pink: index % 2 === 0,
-          red: index < 2 || index % 1 === 0
+          blue: id % 5 === 0,
+          green: id % 4 === 0,
+          yellow: id % 3 === 0,
+          purple: id % 3 === 0,
+          orange: id % 2 === 0,
+          pink: id % 2 === 0,
+          red: id < 2 || id % 1 === 0
         }"
       />
-      <a href="#" class="show-more">
+      <!-- <a href="#" class="show-more">
         Show
         <span v-if="!expand">More</span>
         <span v-else>Less</span>
-      </a>
+      </a> -->
+      <router-link :to="'/'+id" class="show-more">show more</router-link>
       <p>~ Author ~</p>
       <div class="icon-container">
         <a href="#" tabindex="-1">
@@ -67,7 +67,7 @@
 <script>
 
 export default {
-  props: ['index'],
+  props: ['id', 'quote'],
   data() {
     return {
     }
