@@ -2,8 +2,6 @@
   <div
     class="card"
     :class="{
-      grow: index === cardIndex,
-      shrink: index !== cardIndex && cardIndex === null,
       hide: index !== cardIndex && cardIndex !== null,
       dark: theme === 'dark'
     }"
@@ -51,7 +49,7 @@
           red: index < 2 || index % 1 === 0
         }"
       />
-      <a href="#" @click="expandCard" class="show-more" tabindex="-1">
+      <a href="#" class="show-more">
         Show
         <span v-if="!expand">More</span>
         <span v-else>Less</span>
@@ -72,22 +70,9 @@ export default {
   props: ['index'],
   data() {
     return {
-      expand: false,
     }
   },
   methods: {
-    expandCard() {
-      if(!this.expand) {
-        this.$store.dispatch('setCardIndex', this.index);
-        this.expand = true;
-      }
-      else {
-        this.expand = false;
-        this.$store.dispatch('setCardIndex', null);
-
-        // delay other cards from showing until the one last expanded is done shrinkng
-      }
-    }
   },
   computed: {
     theme() {
