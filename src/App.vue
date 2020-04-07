@@ -1,6 +1,5 @@
 <template>
   <div id="app" :class="{light: theme === 'light', dark: theme === 'dark'}">
-    <Backdrop />
     <Toolbar />
     <div class="container">
       <h1>
@@ -15,7 +14,6 @@
 
 <script>
 // import Tags from './components/Tags/Tags.vue'
-import Backdrop from './Layout/Backdrop/Backdrop.vue';
 import Toolbar from './Layout/Toolbar.vue';
 import Cards from './components/Cards/Cards.vue'
 import 'animate.css'
@@ -29,7 +27,6 @@ export default {
   },
   components: {
     // Tags,
-    Backdrop,
     Toolbar,
     Cards
   }
