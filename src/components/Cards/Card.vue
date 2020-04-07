@@ -2,8 +2,6 @@
   <div
     class="card"
     :class="{
-      grow: index === cardIndex,
-      shrink: index !== cardIndex && cardIndex === null,
       hide: index !== cardIndex && cardIndex !== null,
       dark: theme === 'dark'
     }"
@@ -51,14 +49,14 @@
           red: index < 2 || index % 1 === 0
         }"
       />
-      <a href="#" @click="expandCard" class="show-more">
+      <a href="#" class="show-more">
         Show
         <span v-if="!expand">More</span>
         <span v-else>Less</span>
       </a>
       <p>~ Author ~</p>
       <div class="icon-container">
-        <a href="#">
+        <a href="#" tabindex="-1">
           <font-awesome-icon :icon="['fab', 'twitter']" class="fa-2x twitter-icon" />
         </a>
       </div>
@@ -72,22 +70,9 @@ export default {
   props: ['index'],
   data() {
     return {
-      expand: false,
     }
   },
   methods: {
-    expandCard() {
-      if(!this.expand) {
-        this.$store.dispatch('setCardIndex', this.index);
-        this.expand = true;
-      }
-      else {
-        this.expand = false;
-        this.$store.dispatch('setCardIndex', null);
-
-        // delay other cards from showing until the one last expanded is done shrinkng
-      }
-    }
   },
   computed: {
     theme() {
