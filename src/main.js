@@ -7,11 +7,11 @@ import Quote from './components/Quote.vue';
 import store from './store/store';
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faQuoteLeft, faQuoteRight, faChevronLeft, faChevronRight, faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
+import { faQuoteLeft, faQuoteRight, faChevronLeft, faChevronRight, faMoon, faSun, faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faQuoteLeft, faQuoteRight, faChevronLeft, faChevronRight, faTwitter, faMoon, faSun)
+library.add(faQuoteLeft, faQuoteRight, faChevronLeft, faChevronRight, faTwitter, faMoon, faSun, faArrowLeft, faArrowRight)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 

@@ -1,15 +1,17 @@
 <template>
-  <div
-    class="card"
-    :class="{
-      hide: id !== cardIndex && cardIndex !== null,
+  <div>
+    <div class="arrows" v-show="singleQuote">
+      <router-link :to="`/${this.id-1}`" v-show="this.id > 1"><font-awesome-icon :icon="['fas', 'arrow-left']" class="fa-2x icon-blue" /></router-link>
+      <router-link :to="`/${this.id+1}`"><font-awesome-icon :icon="['fas', 'arrow-right']" class="fa-2x icon-blue" /></router-link>
+    </div>
+
+    <div class="card" :class="{
       dark: theme === 'dark',
       single: singleQuote
-    }"
-  >
-    <div
-      class="under-card"
-      :class="{
+    }">
+      <div
+        class="under-card"
+        :class="{
         blue: id % 5 === 0,
         green: id % 4 === 0,
         yellow: id % 3 === 0,
@@ -18,12 +20,12 @@
         pink: id % 2 === 0,
         red: id < 2 || id % 1 === 0
       }"
-    ></div>
-    <div class="primary-card">
-      <font-awesome-icon
-        icon="quote-left"
-        class="fa-2x quote-icon"
-        :class="{
+      ></div>
+      <div class="primary-card">
+        <font-awesome-icon
+          icon="quote-left"
+          class="fa-2x quote-icon"
+          :class="{
           blue: id % 5 === 0,
           green: id % 4 === 0,
           yellow: id % 3 === 0,
@@ -32,14 +34,12 @@
           pink: id % 2 === 0,
           red: id < 2 || id % 1 === 0
         }"
-      />
-      <p>
-        {{quote}}
-      </p>
-      <font-awesome-icon
-        icon="quote-right"
-        class="fa-2x quote-icon"
-        :class="{
+        />
+        <p>{{quote}}</p>
+        <font-awesome-icon
+          icon="quote-right"
+          class="fa-2x quote-icon"
+          :class="{
           blue: id % 5 === 0,
           green: id % 4 === 0,
           yellow: id % 3 === 0,
@@ -48,19 +48,14 @@
           pink: id % 2 === 0,
           red: id < 2 || id % 1 === 0
         }"
-      />
-      <!-- <a href="#" class="show-more">
-        Show
-        <span v-if="!expand">More</span>
-        <span v-else>Less</span>
-      </a> -->
-      <!-- <router-link :to="'/'+id" class="show-more" @click="setQuote">show more</router-link> -->
-      <a class="show-more" @click="setQuote">show more</a>
-      <p>~ Author ~</p>
-      <div class="icon-container">
-        <a href="#" tabindex="-1">
-          <font-awesome-icon :icon="['fab', 'twitter']" class="fa-2x twitter-icon" />
-        </a>
+        />
+        <a class="show-more" @click="setQuote" v-show="!singleQuote">show more</a>
+        <p>~ Author ~</p>
+        <div class="icon-container">
+          <a href="#" tabindex="-1">
+            <font-awesome-icon :icon="['fab', 'twitter']" class="fa-2x icon-blue" />
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -100,24 +95,39 @@ export default {
 <style lang="scss">
 @import "../../assets/base.scss";
 
+.arrows {
+  // margin-bottom: 2rem;
+  position: relative;
+
+  .fa-arrow-left {
+    position: absolute;
+    left: 0;
+  }
+
+  .fa-arrow-right {
+    position: absolute;
+    right: 0;
+  }
+}
+
 .card {
   position: relative;
-  margin-bottom: 3rem;
   width: 20rem;
-  margin-bottom: 3rem;
+  // margin-bottom: 3rem;
   margin: 2rem 3rem;
 
   &.single {
     width: 100%;
+    margin: 0;
   }
 
-  &.grow {
-    animation: grow 1s forwards;
-  }
+  // &.grow {
+  //   animation: grow 1s forwards;
+  // }
 
-  &.shrink {
-    animation: shrink 1s forwards;
-  }
+  // &.shrink {
+  //   animation: shrink 1s forwards;
+  // }
 
   &.hide {
     display: none;
@@ -229,11 +239,11 @@ export default {
   justify-content: flex-end;
 }
 
-.twitter-icon {
+.icon-blue {
   color: #55acee;
 }
 
-.twitter-icon:hover {
+.icon-blue:hover {
   cursor: pointer;
 }
 
@@ -251,21 +261,21 @@ a.show-more {
   }
 }
 
-@keyframes grow {
-  0% {
-    width: 20rem;
-  }
-  100% {
-    width: 80%;
-  }
-}
+// @keyframes grow {
+//   0% {
+//     width: 20rem;
+//   }
+//   100% {
+//     width: 80%;
+//   }
+// }
 
-@keyframes shrink {
-  0% {
-    width: 80%;
-  }
-  100% {
-    width: 20rem;
-  }
-}
+// @keyframes shrink {
+//   0% {
+//     width: 80%;
+//   }
+//   100% {
+//     width: 20rem;
+//   }
+// }
 </style>
