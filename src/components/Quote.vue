@@ -1,6 +1,6 @@
 <template>
   <div>
-    <card :id="id" :quote="quote"/>
+    <card :id="getId" :quote="quote" :singleQuote="true"/>
   </div>
 </template>
 
@@ -10,6 +10,9 @@ import Card from '../components/Cards/Card';
 export default {
     props: ['id'],
     computed: {
+        getId() {
+            return Number.parseInt(this.id);
+        },
         quote() {
             return this.$store.getters.getQuote;
         },

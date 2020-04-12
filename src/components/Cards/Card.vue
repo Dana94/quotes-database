@@ -3,7 +3,8 @@
     class="card"
     :class="{
       hide: id !== cardIndex && cardIndex !== null,
-      dark: theme === 'dark'
+      dark: theme === 'dark',
+      single: singleQuote
     }"
   >
     <div
@@ -68,7 +69,13 @@
 <script>
 
 export default {
-  props: ['id', 'quote'],
+  props: {
+    id: Number,
+    quote: String,
+    singleQuote: {
+      default: false
+    }
+  },
   data() {
     return {
     }
@@ -99,6 +106,10 @@ export default {
   width: 20rem;
   margin-bottom: 3rem;
   margin: 2rem 3rem;
+
+  &.single {
+    width: 100%;
+  }
 
   &.grow {
     animation: grow 1s forwards;
