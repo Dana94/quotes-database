@@ -53,7 +53,8 @@
         <span v-if="!expand">More</span>
         <span v-else>Less</span>
       </a> -->
-      <router-link :to="'/'+id" class="show-more">show more</router-link>
+      <!-- <router-link :to="'/'+id" class="show-more" @click="setQuote">show more</router-link> -->
+      <a class="show-more" @click="setQuote">show more</a>
       <p>~ Author ~</p>
       <div class="icon-container">
         <a href="#" tabindex="-1">
@@ -73,6 +74,10 @@ export default {
     }
   },
   methods: {
+    setQuote() {
+      this.$store.dispatch('setQuote', this.quote);
+      this.$router.push({path: `/${this.id}`});
+    }
   },
   computed: {
     theme() {
@@ -224,6 +229,9 @@ export default {
 a.show-more {
   display: block;
   margin: 1rem 0;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 @media (min-width: 768px) {
