@@ -76,6 +76,10 @@ body {
 
   &.light {
     background-color: $light-bg;
+
+    h1 {
+      color: $dark-bg;
+    }
   }
 
   &.dark {

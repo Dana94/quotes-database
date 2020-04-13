@@ -1,8 +1,5 @@
 <template>
   <div>
-    <!-- <div class="arrows" v-show="singleQuote">
-    </div>-->
-
     <div class="card" :class="{
       dark: theme === 'dark',
       single: singleQuote
@@ -114,21 +111,12 @@ export default {
 .card {
   position: relative;
   width: 20rem;
-  // margin-bottom: 3rem;
   margin: 2rem 3rem;
 
   &.single {
     width: 100%;
     margin: 0;
   }
-
-  // &.grow {
-  //   animation: grow 1s forwards;
-  // }
-
-  // &.shrink {
-  //   animation: shrink 1s forwards;
-  // }
 
   &.hide {
     display: none;
@@ -176,6 +164,11 @@ export default {
       &.purple {
         background-color: $dark-purple;
       }
+    }
+
+    a.show-more {
+      background-color: $light-bg;
+      color: $dark-bg;
     }
   }
 }
@@ -242,15 +235,20 @@ export default {
 
 .icon-blue {
   color: #55acee;
-}
 
-.icon-blue:hover {
-  cursor: pointer;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 a.show-more {
   display: block;
-  margin: 1rem 0;
+  margin: 1rem auto;
+  background-color: $dark-bg;
+  color: white;
+  width: max-content;
+  padding: 0.5rem;
+  border-radius: 10%;
   &:hover {
     cursor: pointer;
   }
@@ -261,22 +259,4 @@ a.show-more {
     width: 3rem;
   }
 }
-
-// @keyframes grow {
-//   0% {
-//     width: 20rem;
-//   }
-//   100% {
-//     width: 80%;
-//   }
-// }
-
-// @keyframes shrink {
-//   0% {
-//     width: 80%;
-//   }
-//   100% {
-//     width: 20rem;
-//   }
-// }
 </style>
