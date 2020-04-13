@@ -4,7 +4,7 @@
     mode="out-in"
   >
     <div class="cards" v-if="showCards">
-      <card v-for="i in 8" :key="i" :index="i"/>
+      <card v-for="quote in quotes" :key="quote.id" :id="quote.id" :quote="quote.quote"/>
     </div>
   </transition>
 </template>
@@ -16,7 +16,22 @@ export default {
   name: 'Cards',
   data() {
     return {
-      showCards: false
+      showCards: false,
+      // testing
+      quotes: [
+        {
+          quote: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, se',
+          id: 1
+        },
+        {
+          quote: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, se',
+          id: 2
+        },
+        {
+          quote: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, se',
+          id: 3
+        }
+      ]
     }
   },
   mounted() {

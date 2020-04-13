@@ -7,7 +7,7 @@
         <br />
         <span>Database</span>
       </h1>
-      <Cards />
+      <router-view></router-view>
     </div>
   </div>
 </template>
@@ -15,7 +15,6 @@
 <script>
 // import Tags from './components/Tags/Tags.vue'
 import Toolbar from './Layout/Toolbar.vue';
-import Cards from './components/Cards/Cards.vue'
 import 'animate.css'
 
 export default {
@@ -28,7 +27,6 @@ export default {
   components: {
     // Tags,
     Toolbar,
-    Cards
   }
 }
 </script>
@@ -52,7 +50,7 @@ export default {
 
 h1 {
   font-family: "Lobster", cursive;
-  margin-bottom: 5rem;
+  margin-bottom: 8rem;
   font-size: 3rem;
 
   span {
@@ -73,10 +71,15 @@ body {
   // width: 100%;
 }
 #app {
-  height: 100%;
+  // height: 100%;
+  min-height: 100vh;
 
   &.light {
     background-color: $light-bg;
+
+    h1 {
+      color: $dark-bg;
+    }
   }
 
   &.dark {

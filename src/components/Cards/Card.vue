@@ -1,64 +1,62 @@
 <template>
-  <div
-    class="card"
-    :class="{
-      hide: index !== cardIndex && cardIndex !== null,
-      dark: theme === 'dark'
-    }"
-  >
-    <div
-      class="under-card"
-      :class="{
-        blue: index % 5 === 0,
-        green: index % 4 === 0,
-        yellow: index % 3 === 0,
-        purple: index % 3 === 0,
-        orange: index % 2 === 0,
-        pink: index % 2 === 0,
-        red: index < 2 || index % 1 === 0
+  <div>
+    <div class="card" :class="{
+      dark: theme === 'dark',
+      single: singleQuote
+    }">
+      <router-link :to="`/${this.id-1}`" v-show="this.id > 1 && singleQuote">
+        <font-awesome-icon :icon="['fas', 'arrow-left']" class="fa-2x icon-blue" />
+      </router-link>
+      <router-link :to="`/${this.id+1}`" v-show="singleQuote">
+        <font-awesome-icon :icon="['fas', 'arrow-right']" class="fa-2x icon-blue" />
+      </router-link>
+      <div
+        class="under-card"
+        :class="{
+        blue: id % 5 === 0,
+        green: id % 4 === 0,
+        yellow: id % 3 === 0,
+        purple: id % 3 === 0,
+        orange: id % 2 === 0,
+        pink: id % 2 === 0,
+        red: id < 2 || id % 1 === 0
       }"
-    ></div>
-    <div class="primary-card">
-      <font-awesome-icon
-        icon="quote-left"
-        class="fa-2x quote-icon"
-        :class="{
-          blue: index % 5 === 0,
-          green: index % 4 === 0,
-          yellow: index % 3 === 0,
-          purple: index % 3 === 0,
-          orange: index % 2 === 0,
-          pink: index % 2 === 0,
-          red: index < 2 || index % 1 === 0
+      ></div>
+      <div class="primary-card">
+        <font-awesome-icon
+          icon="quote-left"
+          class="fa-2x quote-icon"
+          :class="{
+          blue: id % 5 === 0,
+          green: id % 4 === 0,
+          yellow: id % 3 === 0,
+          purple: id % 3 === 0,
+          orange: id % 2 === 0,
+          pink: id % 2 === 0,
+          red: id < 2 || id % 1 === 0
         }"
-      />
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet,
-        consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-      </p>
-      <font-awesome-icon
-        icon="quote-right"
-        class="fa-2x quote-icon"
-        :class="{
-          blue: index % 5 === 0,
-          green: index % 4 === 0,
-          yellow: index % 3 === 0,
-          purple: index % 3 === 0,
-          orange: index % 2 === 0,
-          pink: index % 2 === 0,
-          red: index < 2 || index % 1 === 0
+        />
+        <p>{{quote}}</p>
+        <font-awesome-icon
+          icon="quote-right"
+          class="fa-2x quote-icon"
+          :class="{
+          blue: id % 5 === 0,
+          green: id % 4 === 0,
+          yellow: id % 3 === 0,
+          purple: id % 3 === 0,
+          orange: id % 2 === 0,
+          pink: id % 2 === 0,
+          red: id < 2 || id % 1 === 0
         }"
-      />
-      <a href="#" class="show-more">
-        Show
-        <span v-if="!expand">More</span>
-        <span v-else>Less</span>
-      </a>
-      <p>~ Author ~</p>
-      <div class="icon-container">
-        <a href="#" tabindex="-1">
-          <font-awesome-icon :icon="['fab', 'twitter']" class="fa-2x twitter-icon" />
-        </a>
+        />
+        <a class="show-more" @click="setQuote" v-show="!singleQuote">show more</a>
+        <p>~ Author ~</p>
+        <div class="icon-container">
+          <a href="#" tabindex="-1">
+            <font-awesome-icon :icon="['fab', 'twitter']" class="fa-2x icon-blue" />
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -67,12 +65,22 @@
 <script>
 
 export default {
-  props: ['index'],
+  props: {
+    id: Number,
+    quote: String,
+    singleQuote: {
+      default: false
+    }
+  },
   data() {
     return {
     }
   },
   methods: {
+    setQuote() {
+      this.$store.dispatch('setQuote', this.quote);
+      this.$router.push({path: `/${this.id}`});
+    }
   },
   computed: {
     theme() {
@@ -88,19 +96,26 @@ export default {
 <style lang="scss">
 @import "../../assets/base.scss";
 
+.fa-arrow-left {
+  position: absolute;
+  left: 0;
+  top: -4rem;
+}
+
+.fa-arrow-right {
+  position: absolute;
+  right: 0;
+  top: -4rem;
+}
+
 .card {
   position: relative;
-  margin-bottom: 3rem;
   width: 20rem;
-  margin-bottom: 3rem;
   margin: 2rem 3rem;
 
-  &.grow {
-    animation: grow 1s forwards;
-  }
-
-  &.shrink {
-    animation: shrink 1s forwards;
+  &.single {
+    width: 100%;
+    margin: 0;
   }
 
   &.hide {
@@ -149,6 +164,11 @@ export default {
       &.purple {
         background-color: $dark-purple;
       }
+    }
+
+    a.show-more {
+      background-color: $light-bg;
+      color: $dark-bg;
     }
   }
 }
@@ -213,40 +233,30 @@ export default {
   justify-content: flex-end;
 }
 
-.twitter-icon {
+.icon-blue {
   color: #55acee;
-}
 
-.twitter-icon:hover {
-  cursor: pointer;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 a.show-more {
   display: block;
-  margin: 1rem 0;
+  margin: 1rem auto;
+  background-color: $dark-bg;
+  color: white;
+  width: max-content;
+  padding: 0.5rem;
+  border-radius: 10%;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 @media (min-width: 768px) {
   .quote-icon {
     width: 3rem;
-  }
-}
-
-@keyframes grow {
-  0% {
-    width: 20rem;
-  }
-  100% {
-    width: 80%;
-  }
-}
-
-@keyframes shrink {
-  0% {
-    width: 80%;
-  }
-  100% {
-    width: 20rem;
   }
 }
 </style>
