@@ -50,7 +50,7 @@ export default {
 
 h1 {
   font-family: "Lobster", cursive;
-  margin-bottom: 5rem;
+  margin-bottom: 8rem;
   font-size: 3rem;
 
   span {

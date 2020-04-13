@@ -1,14 +1,18 @@
 <template>
   <div>
-    <div class="arrows" v-show="singleQuote">
-      <router-link :to="`/${this.id-1}`" v-show="this.id > 1"><font-awesome-icon :icon="['fas', 'arrow-left']" class="fa-2x icon-blue" /></router-link>
-      <router-link :to="`/${this.id+1}`"><font-awesome-icon :icon="['fas', 'arrow-right']" class="fa-2x icon-blue" /></router-link>
-    </div>
+    <!-- <div class="arrows" v-show="singleQuote">
+    </div>-->
 
     <div class="card" :class="{
       dark: theme === 'dark',
       single: singleQuote
     }">
+      <router-link :to="`/${this.id-1}`" v-show="this.id > 1 && singleQuote">
+        <font-awesome-icon :icon="['fas', 'arrow-left']" class="fa-2x icon-blue" />
+      </router-link>
+      <router-link :to="`/${this.id+1}`" v-show="singleQuote">
+        <font-awesome-icon :icon="['fas', 'arrow-right']" class="fa-2x icon-blue" />
+      </router-link>
       <div
         class="under-card"
         :class="{
@@ -95,19 +99,16 @@ export default {
 <style lang="scss">
 @import "../../assets/base.scss";
 
-.arrows {
-  // margin-bottom: 2rem;
-  position: relative;
+.fa-arrow-left {
+  position: absolute;
+  left: 0;
+  top: -4rem;
+}
 
-  .fa-arrow-left {
-    position: absolute;
-    left: 0;
-  }
-
-  .fa-arrow-right {
-    position: absolute;
-    right: 0;
-  }
+.fa-arrow-right {
+  position: absolute;
+  right: 0;
+  top: -4rem;
 }
 
 .card {
