@@ -4,12 +4,12 @@
       dark: theme === 'dark',
       single: singleQuote
     }">
-      <router-link :to="`/${this.id-1}`" v-show="this.id > 1 && singleQuote">
+      <router-link to="/" v-show="this.id > 1 && singleQuote">
         <font-awesome-icon :icon="['fas', 'arrow-left']" class="fa-2x icon-blue" />
       </router-link>
-      <router-link :to="`/${this.id+1}`" v-show="singleQuote">
+      <!-- <router-link :to="`/${this.id+1}`" v-show="singleQuote">
         <font-awesome-icon :icon="['fas', 'arrow-right']" class="fa-2x icon-blue" />
-      </router-link>
+      </router-link> -->
       <div
         class="under-card"
         :class="{
