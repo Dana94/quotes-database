@@ -11,6 +11,20 @@ import { faQuoteLeft, faQuoteRight, faChevronLeft, faChevronRight, faMoon, faSun
 import { faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
+import ApolloClient from 'apollo-boost'
+import VueApollo from 'vue-apollo'
+
+Vue.use(VueApollo);
+
+const apolloClient = new ApolloClient({
+  // You should use an absolute URL here
+  uri: 'https://hopeful-goldberg-bf6881.netlify.app/'
+});
+
+const apolloProvider = new VueApollo({
+  defaultClient: apolloClient,
+});
+
 library.add(faQuoteLeft, faQuoteRight, faChevronLeft, faChevronRight, faTwitter, faMoon, faSun, faArrowLeft, faArrowRight)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
@@ -35,6 +49,7 @@ const router = new VueRouter({
 
 new Vue({
   store,
+  apolloProvider,
   router,
   render: h => h(App),
 }).$mount('#app')

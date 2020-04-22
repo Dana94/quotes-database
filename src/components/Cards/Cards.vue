@@ -10,29 +10,29 @@
 </template>
 
 <script>
+import gql from 'graphql-tag';
+
 import Card from './Card.vue';
+
+const quotesQuery = gql(`{
+  quotes {
+    quote
+  }
+}`);
 
 export default {
   name: 'Cards',
   data() {
     return {
       showCards: false,
-      // testing
-      quotes: [
-        {
-          quote: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, se',
-          id: 1
-        },
-        {
-          quote: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, se',
-          id: 2
-        },
-        {
-          quote: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, se',
-          id: 3
-        }
-      ]
+      quotes: []
     }
+  },
+  apollo: {
+    quotes: {
+      query: quotesQuery,
+      loadingKey: 'Stuff is happening...'
+    },
   },
   mounted() {
     setTimeout(()=>{
