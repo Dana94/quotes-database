@@ -44,13 +44,13 @@ export default {
 }
 
 .container {
-  width: 75%;
+  width: 90%;
   margin: 0 auto;
 }
 
 h1 {
   font-family: "Lobster", cursive;
-  margin-bottom: 8rem;
+  margin: 4rem 0;
   font-size: 3rem;
 
   span {
@@ -59,6 +59,9 @@ h1 {
 }
 
 @media (min-width: 768px) {
+  // .container {
+  //   width: 75%;
+  // }
   h1 {
     font-size: 4rem;
   }
