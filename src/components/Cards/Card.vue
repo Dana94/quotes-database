@@ -113,6 +113,8 @@ export default {
   width: 20rem;
   margin: 2rem 3rem;
 
+  font-family: 'Baloo Thambi 2', cursive;
+
   &.single {
     width: 100%;
     margin: 0;
