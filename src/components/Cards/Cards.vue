@@ -7,7 +7,7 @@
       {{$apollo.queries.quotes.loadingKey}}
     </div>
     <div class="cards" v-else-if="showCards && !$apollo.queries.quotes.loading">
-      <card v-for="(quote, index) in quotes" :key="index" :id="index" :quote="quote.quote"/>
+      <card v-for="(quote, index) in quotes" :key="index" :id="index" :quote="quote"/>
     </div>
   </transition>
 </template>
@@ -20,6 +20,9 @@ import Card from './Card.vue';
 const quotesQuery = gql(`{
   quotes {
     quote
+    author {
+      name
+    }
   }
 }`);
 

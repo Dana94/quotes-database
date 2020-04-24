@@ -36,7 +36,7 @@
           red: id < 2 || id % 1 === 0
         }"
         />
-        <p>{{quote}}</p>
+        <p>{{quote.quote}}</p>
         <font-awesome-icon
           icon="quote-right"
           class="fa-2x quote-icon"
@@ -51,7 +51,7 @@
         }"
         />
         <a class="show-more" @click="setQuote" v-show="!singleQuote">show more</a>
-        <p>~ Author ~</p>
+        <p>~ {{quote.author.name}} ~</p>
         <div class="icon-container">
           <a href="#" tabindex="-1">
             <font-awesome-icon :icon="['fab', 'twitter']" class="fa-2x icon-blue" />
@@ -67,7 +67,7 @@
 export default {
   props: {
     id: Number,
-    quote: String,
+    quote: Object,
     singleQuote: {
       default: false
     }
