@@ -119,6 +119,7 @@ export default {
   position: relative;
   // width: 20rem;
   margin: 2rem 3rem;
+  letter-spacing: 1px;
 
   font-family: 'Baloo Thambi 2', cursive;
 
