@@ -9,7 +9,7 @@
       </router-link>
       <!-- <router-link :to="`/${this.id+1}`" v-show="singleQuote">
         <font-awesome-icon :icon="['fas', 'arrow-right']" class="fa-2x icon-blue" />
-      </router-link> -->
+      </router-link>-->
       <div
         class="under-card"
         :class="{
@@ -36,8 +36,26 @@
           red: id < 2 || id % 1 === 0
         }"
         />
-        <p>{{quote.quote}}<span v-if="longQuote">...</span></p>
-        <a class="show-more" @click="setQuote" v-show="!singleQuote && longQuote">show more</a>
+        <!-- desktop -->
+        <template v-if="!inMobile">
+          <!-- all quotes show -->
+          <p>{{quote.quote}}</p>
+        </template>
+
+        <!-- mobile -->
+        <template v-else>
+          <p v-if="!longQuote">{{quote.quote}}</p>
+          <!-- longer quotes have "show more" option -->
+          <p v-else>
+            <template v-if="showFullQuote">{{quote.quote}}</template>
+            <template v-else>{{shortenQuote}}...</template>
+            <a class="show-more" @click="showFullQuote = !showFullQuote">
+              show
+              <span v-if="!showFullQuote">more</span>
+              <span v-else>less</span>
+            </a>
+          </p>
+        </template>
         <font-awesome-icon
           icon="quote-right"
           class="fa-2x quote-icon"
@@ -74,6 +92,7 @@ export default {
   },
   data() {
     return {
+      showFullQuote: false
     }
   },
   methods: {
@@ -94,11 +113,14 @@ export default {
     },
     twitterLink() {
       return 'https://twitter.com/intent/tweet?text=' + encodeURI(this.quote.quote) + ' -' + encodeURI(this.quote.author.name);
+    },
+    // cut off longer quotes until "show more" is clicked
+    shortenQuote() {
+      return this.quote.quote.substring(0, 100);
+    },
+    inMobile() {
+      return window.innerWidth < 768
     }
-    // shortenQuote() {
-    //   return this.quote
-    // },
-
   }
 }
 </script>
@@ -124,7 +146,7 @@ export default {
   margin: 2rem 3rem;
   letter-spacing: 1px;
 
-  font-family: 'Baloo Thambi 2', cursive;
+  font-family: "Baloo Thambi 2", cursive;
 
   &.single {
     width: 100%;
