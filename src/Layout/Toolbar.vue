@@ -24,7 +24,7 @@ export default {
 
 nav {
   background-color: #d6e7f3;
-  box-shadow: 0px 3px 7px black;
+  box-shadow: 0px 3px 7px #0000004f;
   height: 3rem;
   position: sticky;
   top: 0;
