@@ -53,7 +53,7 @@
         />
         <p>~ {{quote.author.name}} ~</p>
         <div class="icon-container">
-          <a href="#">
+          <a :href="twitterLink" target="_blank">
             <font-awesome-icon :icon="['fab', 'twitter']" class="fa-2x icon-blue" />
           </a>
         </div>
@@ -92,6 +92,9 @@ export default {
     longQuote() {
       return this.quote.quote.length > 100; // 260; TODO: change back
     },
+    twitterLink() {
+      return 'https://twitter.com/intent/tweet?text=' + encodeURI(this.quote.quote) + ' -' + encodeURI(this.quote.author.name);
+    }
     // shortenQuote() {
     //   return this.quote
     // },
