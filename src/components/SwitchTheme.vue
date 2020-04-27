@@ -31,7 +31,7 @@ $light: #abc8ff;
 $white: #ffffff;
 
 .theme-switch {
-  margin-right: 3rem;
+  margin-right: 1rem;
   display: flex;
   align-items: center;
 }
@@ -41,5 +41,11 @@ $white: #ffffff;
 }
 .sun {
   color: orange;
+}
+
+@media (min-width: 768px) {
+  .theme-switch {
+    margin-right: 3rem;
+  }
 }
 </style>

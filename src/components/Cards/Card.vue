@@ -36,7 +36,8 @@
           red: id < 2 || id % 1 === 0
         }"
         />
-        <p>{{quote.quote}}</p>
+        <p>{{quote.quote}}<span v-if="longQuote">...</span></p>
+        <a class="show-more" @click="setQuote" v-show="!singleQuote && longQuote">show more</a>
         <font-awesome-icon
           icon="quote-right"
           class="fa-2x quote-icon"
@@ -50,10 +51,9 @@
           red: id < 2 || id % 1 === 0
         }"
         />
-        <a class="show-more" @click="setQuote" v-show="!singleQuote">show more</a>
         <p>~ {{quote.author.name}} ~</p>
         <div class="icon-container">
-          <a href="#" tabindex="-1">
+          <a href="#">
             <font-awesome-icon :icon="['fab', 'twitter']" class="fa-2x icon-blue" />
           </a>
         </div>
@@ -88,7 +88,14 @@ export default {
     },
     cardIndex() {
       return this.$store.getters.getCardIndex;
-    }
+    },
+    longQuote() {
+      return this.quote.quote.length > 100; // 260; TODO: change back
+    },
+    // shortenQuote() {
+    //   return this.quote
+    // },
+
   }
 }
 </script>
@@ -110,8 +117,11 @@ export default {
 
 .card {
   position: relative;
-  width: 20rem;
+  // width: 20rem;
   margin: 2rem 3rem;
+  letter-spacing: 1px;
+
+  font-family: 'Baloo Thambi 2', cursive;
 
   &.single {
     width: 100%;

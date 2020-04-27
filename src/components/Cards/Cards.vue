@@ -62,8 +62,6 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-
-  font-family: 'Baloo Thambi 2', cursive;
 }
 
 @media (min-width: 768px) {
