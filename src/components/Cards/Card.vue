@@ -53,7 +53,7 @@
         />
         <p>~ {{quote.author.name}} ~</p>
         <div class="icon-container">
-          <a href="#" tabindex="-1">
+          <a href="#">
             <font-awesome-icon :icon="['fab', 'twitter']" class="fa-2x icon-blue" />
           </a>
         </div>
