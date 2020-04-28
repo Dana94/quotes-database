@@ -1,5 +1,5 @@
 <template>
-  <div>
+
     <div class="card" :class="{
       dark: theme === 'dark',
       single: singleQuote
@@ -77,7 +77,7 @@
         </div>
       </div>
     </div>
-  </div>
+
 </template>
 
 <script>
