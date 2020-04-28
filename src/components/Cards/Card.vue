@@ -4,12 +4,6 @@
       dark: theme === 'dark',
       single: singleQuote
     }">
-      <router-link to="/" v-show="this.id > 1 && singleQuote">
-        <font-awesome-icon :icon="['fas', 'arrow-left']" class="fa-2x icon-blue" />
-      </router-link>
-      <!-- <router-link :to="`/${this.id+1}`" v-show="singleQuote">
-        <font-awesome-icon :icon="['fas', 'arrow-right']" class="fa-2x icon-blue" />
-      </router-link>-->
       <div
         class="under-card"
         :class="{
@@ -95,18 +89,9 @@ export default {
       showFullQuote: false
     }
   },
-  methods: {
-    setQuote() {
-      this.$store.dispatch('setQuote', this.quote);
-      this.$router.push({path: `/${this.id}`});
-    }
-  },
   computed: {
     theme() {
       return this.$store.getters.getTheme;
-    },
-    cardIndex() {
-      return this.$store.getters.getCardIndex;
     },
     longQuote() {
       return this.quote.quote.length > 100; // 260; TODO: change back
