@@ -18,7 +18,6 @@ export default {
   methods: {
     toggleTheme () {
       this.theme = this.theme === 'light' ? 'dark' : 'light';
-      console.log(this.theme)
       this.$store.dispatch('setTheme', this.theme);
     }
   }

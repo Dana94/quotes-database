@@ -7,7 +7,7 @@
         <br />
         <span>Database</span>
       </h1>
-      <router-view></router-view>
+      <cards />
     </div>
   </div>
 </template>
@@ -15,6 +15,7 @@
 <script>
 // import Tags from './components/Tags/Tags.vue'
 import Toolbar from './Layout/Toolbar.vue';
+import Cards from './components/Cards/Cards';
 import 'animate.css'
 
 export default {
@@ -27,6 +28,7 @@ export default {
   components: {
     // Tags,
     Toolbar,
+    Cards
   }
 }
 </script>

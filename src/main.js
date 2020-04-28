@@ -1,8 +1,5 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router';
-import App from './App.vue'
-import Cards from './components/Cards/Cards.vue';
-import Quote from './components/Quote.vue';
+import Vue from 'vue';
+import App from './App.vue';
 
 import store from './store/store';
 
@@ -31,25 +28,8 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.config.productionTip = false
 
-Vue.use(VueRouter);
-
-const router = new VueRouter({
-  routes: [
-    {
-      path: '/',
-      component: Cards
-    },
-    {
-      path: '/:id',
-      component: Quote,
-      props: true
-    },
-  ]
-});
-
 new Vue({
   store,
   apolloProvider,
-  router,
   render: h => h(App),
 }).$mount('#app')
