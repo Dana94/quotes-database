@@ -64,6 +64,7 @@
         }"
         />
         <p>~ {{quote.author.name}} ~</p>
+        <p>{{quote.author.description}}</p>
         <div class="icon-container">
           <a :href="twitterLink" target="_blank">
             <font-awesome-icon :icon="['fab', 'twitter']" class="fa-2x icon-blue" />
@@ -277,6 +278,10 @@ a.show-more {
 @media (min-width: 768px) {
   .quote-icon {
     width: 3rem;
+  }
+  .card {
+    max-width: 50%;
+
   }
 }
 </style>
