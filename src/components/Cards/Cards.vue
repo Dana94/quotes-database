@@ -3,8 +3,8 @@
     enter-active-class="animated fadeInUp"
     mode="out-in"
   >
-    <div v-if="$apollo.queries.quotes.loading">
-      {{$apollo.queries.quotes.loadingKey}}
+    <div v-if="!$apollo.queries.quotes.loading">
+      <loading :message="$apollo.queries.quotes.loadingKey"/>
     </div>
     <div class="cards" v-else-if="showCards && !$apollo.queries.quotes.loading">
       <card v-for="(quote, index) in quotes" :key="index" :id="index" :quote="quote"/>
@@ -16,6 +16,7 @@
 import gql from 'graphql-tag';
 
 import Card from './Card.vue';
+import Loading from '../Loading.vue';
 
 const quotesQuery = gql(`{
   quotes {
@@ -47,7 +48,8 @@ export default {
     },1000)
   },
   components: {
-    Card
+    Card,
+    Loading
   }
 }
 </script>
