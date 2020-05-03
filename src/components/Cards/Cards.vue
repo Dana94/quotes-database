@@ -4,7 +4,7 @@
     mode="out-in"
   >
     <div v-if="$apollo.queries.quotes.loading">
-      {{$apollo.queries.quotes.loadingKey}}
+      <loading />
     </div>
     <div class="cards" v-else-if="showCards && !$apollo.queries.quotes.loading">
       <card v-for="(quote, index) in quotes" :key="index" :id="index" :quote="quote"/>
@@ -16,12 +16,14 @@
 import gql from 'graphql-tag';
 
 import Card from './Card.vue';
+import Loading from '../Loading.vue';
 
 const quotesQuery = gql(`{
   quotes {
     quote
     author {
       name
+      description
     }
   }
 }`);
@@ -36,8 +38,7 @@ export default {
   },
   apollo: {
     quotes: {
-      query: quotesQuery,
-      loadingKey: 'Stuff is happening...'
+      query: quotesQuery
     },
   },
   mounted() {
@@ -46,7 +47,8 @@ export default {
     },1000)
   },
   components: {
-    Card
+    Card,
+    Loading
   }
 }
 </script>
@@ -54,29 +56,9 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
 .cards {
-  // display: grid;
-  // grid-template-columns: repeat(1, 1fr);
-  // grid-template-rows: 1fr;
-  // column-gap: 2rem;
-  // row-gap: 3rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-}
-
-@media (min-width: 768px) {
-  .cards {
-    grid-template-columns: repeat(3, 1fr);
-    column-gap: 5rem;
-    row-gap: 5rem;
-  }
-}
-
-@media (min-width: 925px) {
-  .cards {
-    grid-template-columns: repeat(4, 1fr);
-    column-gap: 5rem;
-    row-gap: 5rem;
-  }
+  align-items: center;
 }
 </style>
