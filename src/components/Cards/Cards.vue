@@ -3,8 +3,8 @@
     enter-active-class="animated fadeInUp"
     mode="out-in"
   >
-    <div v-if="!$apollo.queries.quotes.loading">
-      <loading :message="$apollo.queries.quotes.loadingKey"/>
+    <div v-if="$apollo.queries.quotes.loading">
+      <loading />
     </div>
     <div class="cards" v-else-if="showCards && !$apollo.queries.quotes.loading">
       <card v-for="(quote, index) in quotes" :key="index" :id="index" :quote="quote"/>
@@ -38,8 +38,7 @@ export default {
   },
   apollo: {
     quotes: {
-      query: quotesQuery,
-      loadingKey: 'Loading...'
+      query: quotesQuery
     },
   },
   mounted() {

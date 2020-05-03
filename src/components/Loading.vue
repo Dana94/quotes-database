@@ -1,32 +1,42 @@
 <template>
   <div>
-    <img src="../assets/svgs/quote-open-color-light.svg" class="quote-icon"/>
-    <img src="../assets/svgs/quote-open-color-light.svg" class="quote-icon" />
-    {{message}}
-    <!-- <img src="../../assets/svgs/quote-close-color-light.svg" />
-    <img src="../../assets/svgs/quote-close-color-light.svg" />-->
+    <img
+      v-if="theme === 'light'"
+      src="../assets/svgs/double-quote-open-color-light.svg"
+      class="quote-icon"
+    />
+    <img v-else src="../assets/svgs/double-quote-open-color-dark.svg" class="quote-icon" />
   </div>
 </template>
 
 <script>
 export default {
-    props: {
-        message: String
-    },
     computed: {
-        openQuoteSrc() {
-            return ''
+        theme() {
+            return this.$store.getters.getTheme;
         },
-        closeQuoteSrc() {
-            return ''
-        }
     }
 }
 </script>
 
 <style lang="scss">
 img.quote-icon {
-    height: 3rem;
-    width: 2rem;
+  height: 5rem;
+  width: 5rem;
+  animation: 2s ease-in 1s infinite levitate;
+}
+
+@keyframes levitate {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(30px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
 }
 </style>
