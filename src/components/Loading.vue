@@ -1,29 +1,55 @@
 <template>
-  <div>
+  <div class="loading-message" :class="{dark: theme === 'dark'}">
     <img
       v-if="theme === 'light'"
       src="../assets/svgs/double-quote-open-color-light.svg"
       class="quote-icon"
     />
     <img v-else src="../assets/svgs/double-quote-open-color-dark.svg" class="quote-icon" />
+    {{message}}
+    <img
+      v-if="theme === 'light'"
+      src="../assets/svgs/double-quote-close-color-light.svg"
+      class="quote-icon"
+    />
+    <img v-else src="../assets/svgs/double-quote-close-color-dark.svg" class="quote-icon" />
   </div>
 </template>
 
 <script>
 export default {
-    computed: {
-        theme() {
-            return this.$store.getters.getTheme;
-        },
-    }
+  name: 'Loading',
+  props: {
+    message: String
+  },
+  computed: {
+      theme() {
+          return this.$store.getters.getTheme;
+      },
+  }
 }
 </script>
 
 <style lang="scss">
+@import "../assets/base.scss";
+
+.loading-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Baloo Thambi 2", cursive;
+  font-size: 1.5rem;
+  animation: 2s ease-in 1s infinite levitate;
+
+  &.dark {
+    color: $dark-card-text;
+  }
+}
+
 img.quote-icon {
   height: 5rem;
   width: 5rem;
-  animation: 2s ease-in 1s infinite levitate;
+  margin: 0 1rem;
 }
 
 @keyframes levitate {

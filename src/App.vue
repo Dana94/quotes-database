@@ -7,28 +7,52 @@
         <br />
         <span>Database</span>
       </h1>
-      <cards />
+    <loading v-if="$apollo.queries.quotes.loading" :message="$apollo.queries.quotes.loadingKey" />
+    <cards v-else :quotes="quotes"/>
     </div>
   </div>
 </template>
 
 <script>
-// import Tags from './components/Tags/Tags.vue'
+import gql from 'graphql-tag';
+
 import Toolbar from './Layout/Toolbar.vue';
 import Cards from './components/Cards/Cards';
+import Loading from './components/Loading.vue';
 import 'animate.css'
+
+const quotesQuery = gql(`{
+  quotes {
+    quote
+    author {
+      name
+      description
+    }
+  }
+}`);
 
 export default {
   name: 'App',
+  data() {
+    return {
+      quotes: []
+    }
+  },
+  apollo: {
+    quotes: {
+      query: quotesQuery,
+      loadingKey: "Wisdom coming up..."
+    },
+  },
   computed: {
     theme() {
       return this.$store.getters.getTheme;
     },
   },
   components: {
-    // Tags,
     Toolbar,
-    Cards
+    Cards,
+    Loading
   }
 }
 </script>

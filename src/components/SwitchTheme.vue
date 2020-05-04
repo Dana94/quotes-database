@@ -10,6 +10,7 @@
 <script>
 
 export default {
+  name: 'SwitchTheme',
   data() {
     return {
       theme: 'light'

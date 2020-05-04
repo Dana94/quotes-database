@@ -1,45 +1,23 @@
 <template>
-  <transition
-    enter-active-class="animated fadeInUp"
-    mode="out-in"
-  >
-    <div v-if="$apollo.queries.quotes.loading">
-      <loading />
-    </div>
-    <div class="cards" v-else-if="showCards && !$apollo.queries.quotes.loading">
-      <card v-for="(quote, index) in quotes" :key="index" :id="index" :quote="quote"/>
+  <transition enter-active-class="animated fadeInUp" mode="out-in">
+    <div class="cards" v-if="showCards">
+      <card v-for="(quote, index) in quotes" :key="index" :id="index" :quote="quote" />
     </div>
   </transition>
 </template>
 
 <script>
-import gql from 'graphql-tag';
-
 import Card from './Card.vue';
-import Loading from '../Loading.vue';
-
-const quotesQuery = gql(`{
-  quotes {
-    quote
-    author {
-      name
-      description
-    }
-  }
-}`);
 
 export default {
   name: 'Cards',
+  props: {
+    quotes: Array
+  },
   data() {
     return {
-      showCards: false,
-      quotes: []
+      showCards: false
     }
-  },
-  apollo: {
-    quotes: {
-      query: quotesQuery
-    },
   },
   mounted() {
     setTimeout(()=>{
@@ -47,8 +25,7 @@ export default {
     },1000)
   },
   components: {
-    Card,
-    Loading
+    Card
   }
 }
 </script>

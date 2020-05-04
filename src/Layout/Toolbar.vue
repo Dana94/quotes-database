@@ -8,6 +8,7 @@
 import SwitchTheme from '../components/SwitchTheme.vue';
 
 export default {
+  name: 'Toolbar',
   computed: {
     theme() {
       return this.$store.getters.getTheme;
