@@ -78,6 +78,7 @@
 <script>
 
 export default {
+  name: 'Card',
   props: {
     id: Number,
     quote: Object,
@@ -133,6 +134,7 @@ export default {
   letter-spacing: 1px;
 
   font-family: "Baloo Thambi 2", cursive;
+  font-size: 1.2rem;
 
   &.single {
     width: 100%;
