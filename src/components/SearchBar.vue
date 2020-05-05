@@ -1,7 +1,7 @@
 <template>
   <div class="search">
-      <input />
-      <font-awesome-icon :icon="['fas', 'search']" class="fa-lg search-icon" />
+      <input placeholder='Search (Press "/" to focus)' v-model="search" @keydown.enter="storeSearch"/>
+      <font-awesome-icon :icon="['fas', 'search']" class="fa-lg search-icon"  />
   </div>
 </template>
 
@@ -12,6 +12,14 @@ export default {
         return {
             search: ''
         }
+    },
+    methods: {
+        storeSearch() {
+            this.$store.dispatch('setSearch', this.search);
+        }
+    },
+    created() {
+        // listener for "/" key
     }
 }
 </script>
@@ -25,6 +33,10 @@ input {
     display: flex;
     margin: .5rem;
     align-self: stretch;
+    border: none;
+    border-radius: 10px;
+    padding: .5rem;
+    justify-content: center;
 }
 .search-icon {
     align-self: center;

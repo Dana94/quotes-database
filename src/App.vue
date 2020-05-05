@@ -7,8 +7,8 @@
         <br />
         <span>Database</span>
       </h1>
-    <loading v-if="$apollo.queries.quotes.loading" :message="$apollo.queries.quotes.loadingKey" />
-    <cards v-else :quotes="quotes"/>
+      <loading v-if="$apollo.queries.quotes.loading" :message="$apollo.queries.quotes.loadingKey" />
+      <cards v-else :quotes="quotes" />
     </div>
   </div>
 </template>
@@ -31,6 +31,16 @@ const quotesQuery = gql(`{
   }
 }`);
 
+const authorQuotesQuery = gql(`{
+  quotesByAuthorName(authorName: "Wicked") {
+    quote
+    author {
+      name
+      description
+    }
+  }
+}`);
+
 export default {
   name: 'App',
   data() {
@@ -39,15 +49,34 @@ export default {
     }
   },
   apollo: {
+    // quotes: {
+    //   query: quotesQuery,
+    //   loadingKey: "Wisdom coming up..."
+    // },
     quotes: {
-      query: quotesQuery,
-      loadingKey: "Wisdom coming up..."
+      query() {
+        if(this.search) {
+          return authorQuotesQuery
+        }
+        else {
+          return quotesQuery
+        }
+      },
+      // query: quotesQuery,
+      loadingKey: "Wisdom coming up...",
+      update: data => data.quotes || data.quotesByAuthorName
+      // variables: {
+      //   name: 'Wicked',
+      // },
     },
   },
   computed: {
     theme() {
       return this.$store.getters.getTheme;
     },
+    search() {
+      return this.$store.getters.getSearch;
+    }
   },
   created() {
     this.$store.dispatch('initTheme');
