@@ -1,10 +1,12 @@
 <template>
   <nav :class="{dark: theme === 'dark'}">
+    <SearchBar />
     <SwitchTheme />
   </nav>
 </template>
 
 <script>
+import SearchBar from '../components/SearchBar.vue';
 import SwitchTheme from '../components/SwitchTheme.vue';
 
 export default {
@@ -15,7 +17,8 @@ export default {
     },
   },
   components: {
-      SwitchTheme
+    SearchBar,
+    SwitchTheme
   }
 }
 </script>
@@ -32,7 +35,7 @@ nav {
   z-index: 200;
   display: flex;
   padding: 0 0.5rem;
-  justify-content: flex-end;
+  justify-content: space-between;
 
   &.dark {
     background-color: $dark-card;
