@@ -13,12 +13,13 @@ export default {
   name: 'SwitchTheme',
   data() {
     return {
-      theme: 'light'
+      theme: localStorage.getItem('theme') || 'light'
     }
   },
   methods: {
     toggleTheme () {
       this.theme = this.theme === 'light' ? 'dark' : 'light';
+      localStorage.setItem('theme', this.theme);
       this.$store.dispatch('setTheme', this.theme);
     }
   }
