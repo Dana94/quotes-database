@@ -49,6 +49,9 @@ export default {
       return this.$store.getters.getTheme;
     },
   },
+  created() {
+    this.$store.dispatch('initTheme');
+  },
   components: {
     Toolbar,
     Cards,

@@ -15,6 +15,11 @@ export default new Vuex.Store({
     actions: {
         setTheme({ commit }, theme) {
             commit('SET_THEME', theme);
+        },
+        initTheme({commit}) {
+            if(localStorage.getItem('theme')) {
+                commit('SET_THEME', localStorage.getItem('theme'));
+            }
         }
     },
     getters: {
