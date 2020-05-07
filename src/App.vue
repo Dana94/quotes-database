@@ -7,8 +7,10 @@
         <br />
         <span>Database</span>
       </h1>
-      <loading v-if="$apollo.queries.quotes.loading" :message="$apollo.queries.quotes.loadingKey" />
-      <cards v-else :quotes="quotes" />
+      <!-- <loading v-if="$apollo.queries.quotes.loading" :message="$apollo.queries.quotes.loadingKey" />
+      <p>{{JSON.stringify($apollo.queries.quotes)}}</p> -->
+      <!-- <cards v-else :quotes="quotes" /> -->
+      {{quotes}}
     </div>
   </div>
 </template>
@@ -17,29 +19,31 @@
 import gql from 'graphql-tag';
 
 import Toolbar from './Layout/Toolbar.vue';
-import Cards from './components/Cards/Cards';
-import Loading from './components/Loading.vue';
+// import Cards from './components/Cards/Cards';
+// import Loading from './components/Loading.vue';
 import 'animate.css'
 
-const quotesQuery = gql(`{
-  quotes {
-    quote
-    author {
-      name
-      description
-    }
-  }
-}`);
+// const quotesQuery = gql(`{
+//   quotes {
+//     quote
+//     author {
+//       name
+//       description
+//     }
+//   }
+// }`);
 
-const authorQuotesQuery = gql(`{
-  quotesByAuthorName(authorName: "Wicked") {
-    quote
-    author {
-      name
-      description
-    }
-  }
-}`);
+// const authorQuotesQuery = gql(`{
+//   quotesByAuthorName($name: String) {
+//   quotesByAuthorName(authorName: $name) {
+//     quote
+//     author {
+//       name
+//       description
+//     }
+//   }
+//   }
+// }`);
 
 export default {
   name: 'App',
@@ -49,25 +53,19 @@ export default {
     }
   },
   apollo: {
-    // quotes: {
-    //   query: quotesQuery,
-    //   loadingKey: "Wisdom coming up..."
-    // },
     quotes: {
-      query() {
-        if(this.search) {
-          return authorQuotesQuery
+      query: gql`query PingMessage($name: String!) {
+        quotesByAuthorName(authorName: $name) {
+          quote
         }
-        else {
-          return quotesQuery
+      }`,
+      loadingKey: "Wisdom coming up...",
+      update: data => data.quotesByAuthorName,
+      variables () {
+        return {
+          name: 'Wicked',
         }
       },
-      // query: quotesQuery,
-      loadingKey: "Wisdom coming up...",
-      update: data => data.quotes || data.quotesByAuthorName
-      // variables: {
-      //   name: 'Wicked',
-      // },
     },
   },
   computed: {
@@ -83,8 +81,8 @@ export default {
   },
   components: {
     Toolbar,
-    Cards,
-    Loading
+    // Cards,
+    // Loading
   }
 }
 </script>
