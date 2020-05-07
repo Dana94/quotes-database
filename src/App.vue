@@ -19,17 +19,7 @@ import gql from 'graphql-tag';
 import Toolbar from './Layout/Toolbar.vue';
 import Cards from './components/Cards/Cards';
 import Loading from './components/Loading.vue';
-import 'animate.css'
-
-// const quotesQuery = gql(`{
-//   quotes {
-//     quote
-//     author {
-//       name
-//       description
-//     }
-//   }
-// }`);
+import 'animate.css';
 
 export default {
   name: 'App',
@@ -40,17 +30,32 @@ export default {
   },
   apollo: {
     quotes: {
-      query: gql`query authorQuotes($name: String!) {
-        quotesByAuthorName(authorName: $name) {
-          quote
-          author {
-            name
-            description
-          }
+      query () {
+        if (this.search) {
+          return gql`query authorQuotes($name: String!) {
+            quotesByAuthorName(authorName: $name) {
+              quote
+              author {
+                name
+                description
+              }
+            }
+          }`
         }
-      }`,
+        else {
+          return gql(`{
+            quotes {
+              quote
+              author {
+                name
+                description
+              }
+            }
+          }`)
+        }
+      },
       loadingKey: "Wisdom coming up...",
-      update: data => data.quotesByAuthorName,
+      update: data => data.quotesByAuthorName || data.quotes,
       variables () {
         return {
           name: this.search,
