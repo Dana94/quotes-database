@@ -86,7 +86,7 @@ export default {
 @import "./assets/base.scss";
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  // font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -131,7 +131,8 @@ body {
   &.light {
     background-color: $light-bg;
 
-    h1 {
+    h1,
+    .search-icon {
       color: $dark-bg;
     }
   }
@@ -139,7 +140,8 @@ body {
   &.dark {
     background-color: $dark-bg;
 
-    h1 {
+    h1,
+    .search-icon {
       color: $light-bg;
     }
   }
