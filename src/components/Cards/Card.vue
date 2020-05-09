@@ -99,7 +99,7 @@ export default {
       return this.quote.quote.length > 100; // 260; TODO: change back
     },
     twitterLink() {
-      return 'https://twitter.com/intent/tweet?text=' + encodeURI(this.quote.quote) + ' -' + encodeURI(this.quote.author.name);
+      return 'https://twitter.com/intent/tweet?text="' + encodeURI(this.quote.quote) + '" -' + encodeURI(this.quote.author.name);
     },
     // cut off longer quotes until "show more" is clicked
     shortenQuote() {
