@@ -41,6 +41,7 @@ input {
   border-radius: 10px;
   padding: 0.5rem;
   justify-content: center;
+  font-family: "Baloo Thambi 2", cursive;
 }
 .search-icon {
   align-self: center;
