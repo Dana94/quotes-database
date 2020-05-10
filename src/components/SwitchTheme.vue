@@ -1,6 +1,6 @@
 <template>
   <div class="theme-switch">
-    <a href="#" @click.prevent="toggleTheme">
+    <a href="#" @click.prevent="toggleTheme" role="button">
       <font-awesome-icon :icon="['fas', 'sun']" class="fa-lg sun" v-show="theme === 'dark'" />
       <font-awesome-icon :icon="['fas', 'moon']" class="fa-lg moon" v-show="theme === 'light'" />
     </a>

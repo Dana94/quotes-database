@@ -1,12 +1,11 @@
 <template>
-
-    <div class="card" :class="{
+  <div class="card" :class="{
       dark: theme === 'dark',
       single: singleQuote
     }">
-      <div
-        class="under-card"
-        :class="{
+    <div
+      class="under-card"
+      :class="{
         blue: id % 5 === 0,
         green: id % 4 === 0,
         yellow: id % 3 === 0,
@@ -15,12 +14,12 @@
         pink: id % 2 === 0,
         red: id < 2 || id % 1 === 0
       }"
-      ></div>
-      <div class="primary-card">
-        <font-awesome-icon
-          icon="quote-left"
-          class="fa-2x quote-icon"
-          :class="{
+    ></div>
+    <div class="primary-card">
+      <font-awesome-icon
+        icon="quote-left"
+        class="fa-2x quote-icon"
+        :class="{
           blue: id % 5 === 0,
           green: id % 4 === 0,
           yellow: id % 3 === 0,
@@ -29,31 +28,39 @@
           pink: id % 2 === 0,
           red: id < 2 || id % 1 === 0
         }"
-        />
-        <!-- desktop -->
-        <template v-if="!inMobile">
-          <!-- all quotes show -->
+      />
+      <!-- desktop -->
+      <template v-if="!inMobile">
+        <!-- all quotes show -->
+        <blockquote>
           <p>{{quote.quote}}</p>
-        </template>
+        </blockquote>
+      </template>
 
-        <!-- mobile -->
-        <template v-else>
-          <p v-if="!longQuote">{{quote.quote}}</p>
-          <!-- longer quotes have "show more" option -->
-          <p v-else>
-            <template v-if="showFullQuote">{{quote.quote}}</template>
-            <template v-else>{{shortenQuote}}...</template>
-            <a class="show-more" @click="showFullQuote = !showFullQuote">
-              show
-              <span v-if="!showFullQuote">more</span>
-              <span v-else>less</span>
-            </a>
-          </p>
-        </template>
-        <font-awesome-icon
-          icon="quote-right"
-          class="fa-2x quote-icon"
-          :class="{
+      <!-- mobile -->
+      <template v-else>
+        <blockquote v-if="!longQuote">
+          <p>{{quote.quote}}</p>
+        </blockquote>
+        <!-- longer quotes have "show more" option -->
+        <p v-else>
+          <template v-if="showFullQuote">
+            <blockquote>
+              <p>{{quote.quote}}</p>
+            </blockquote>
+          </template>
+          <template v-else>{{shortenQuote}}...</template>
+          <a class="show-more" @click="showFullQuote = !showFullQuote">
+            show
+            <span v-if="!showFullQuote">more</span>
+            <span v-else>less</span>
+          </a>
+        </p>
+      </template>
+      <font-awesome-icon
+        icon="quote-right"
+        class="fa-2x quote-icon"
+        :class="{
           blue: id % 5 === 0,
           green: id % 4 === 0,
           yellow: id % 3 === 0,
@@ -62,7 +69,8 @@
           pink: id % 2 === 0,
           red: id < 2 || id % 1 === 0
         }"
-        />
+      />
+      <footer role="contentinfo">
         <p>~ {{quote.author.name}} ~</p>
         <p>{{quote.author.description}}</p>
         <div class="icon-container">
@@ -70,9 +78,9 @@
             <font-awesome-icon :icon="['fab', 'twitter']" class="fa-2x icon-blue" />
           </a>
         </div>
-      </div>
+      </footer>
     </div>
-
+  </div>
 </template>
 
 <script>
@@ -283,7 +291,6 @@ a.show-more {
   }
   .card {
     max-width: 50%;
-
   }
 }
 </style>
