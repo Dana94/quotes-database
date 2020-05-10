@@ -2,13 +2,20 @@
   <div id="app" :class="{light: theme === 'light', dark: theme === 'dark'}">
     <Toolbar />
     <div class="container">
-      <h1>
-        Quotes
-        <br />
-        <span>Database</span>
-      </h1>
-      <loading v-if="$apollo.queries.quotes.loading" :message="$apollo.queries.quotes.loadingKey" />
-      <cards v-else :quotes="quotes" />
+      <header>
+        <h1>
+          Quotes
+          <br />
+          <span>Database</span>
+        </h1>
+      </header>
+      <main>
+        <loading
+          v-if="$apollo.queries.quotes.loading"
+          :message="$apollo.queries.quotes.loadingKey"
+        />
+        <cards v-else :quotes="quotes" />
+      </main>
     </div>
   </div>
 </template>
