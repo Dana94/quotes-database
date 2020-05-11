@@ -4,7 +4,7 @@ import App from './App.vue';
 import store from './store/store';
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faQuoteLeft, faQuoteRight, faChevronLeft, faChevronRight, faMoon, faSun, faArrowLeft, faArrowRight, faSearch } from '@fortawesome/free-solid-svg-icons'
+import { faQuoteLeft, faQuoteRight, faChevronLeft, faChevronRight, faMoon, faSun, faArrowLeft, faArrowRight, faSearch, faTags } from '@fortawesome/free-solid-svg-icons'
 import { faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
@@ -22,7 +22,7 @@ const apolloProvider = new VueApollo({
   defaultClient: apolloClient,
 });
 
-library.add(faQuoteLeft, faQuoteRight, faChevronLeft, faChevronRight, faTwitter, faMoon, faSun, faArrowLeft, faArrowRight, faSearch)
+library.add(faQuoteLeft, faQuoteRight, faChevronLeft, faChevronRight, faTwitter, faMoon, faSun, faArrowLeft, faArrowRight, faSearch, faTags)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 

@@ -1,11 +1,14 @@
 <template>
   <div class="tags-container">
-    <font-awesome-icon icon="chevron-left" class="fa-2x" />
-    <div class="tags">
-      <p v-if="$apollo.queries.tags.loading">{{$apollo.queries.tags.loadingKey}}</p>
-      <tag v-else v-for="tag in tags" :key="tag.id" :tag="tag" />
-    </div>
-    <font-awesome-icon icon="chevron-right" class="fa-2x" />
+    <template v-if="!inMobile">
+      <font-awesome-icon icon="chevron-left" class="fa-lg" />
+      <div class="tags">
+        <p v-if="$apollo.queries.tags.loading">{{$apollo.queries.tags.loadingKey}}</p>
+        <tag v-else v-for="tag in tags" :key="tag.id" :tag="tag" />
+      </div>
+      <font-awesome-icon icon="chevron-right" class="fa-lg" />
+    </template>
+    <font-awesome-icon v-else icon="tags" class="fa-lg" />
   </div>
 </template>
 
@@ -21,6 +24,11 @@ export default {
   data(){
     return {
       tags: []
+    }
+  },
+  computed: {
+    inMobile() {
+      return window.innerWidth < 768
     }
   },
   apollo: {
