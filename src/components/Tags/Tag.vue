@@ -1,21 +1,42 @@
 <template>
-    <div class="tag">
-        category
-    </div>
+  <button class="tag" :class="{selected: selected}" @click="toggle">{{tag}}</button>
 </template>
 
 <script>
 export default {
-
+    props: {
+        tag: String
+    },
+    data() {
+        return {
+            selected: false
+        }
+    },
+    methods: {
+        toggle() {
+            this.selected = !this.selected
+        }
+    }
 }
 </script>
 
-<style>
+<style lang="scss">
 .tag {
-    background-color: purple;
-    color: white;
-    padding: 1rem;
-    border-radius: 5px;
-    margin: 1rem;
+  background-color: white;
+  color: black;
+  padding: 0.5rem;
+  border-radius: 5px;
+  margin: 1rem;
+  border: none;
+  letter-spacing: 1px;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &.selected {
+      background-color: black;
+      color: white;
+  }
 }
 </style>

@@ -1,20 +1,33 @@
 <template>
-  <div class="tags">
+  <div class="tags-container">
     <font-awesome-icon icon="chevron-left" class="fa-2x" />
-    <div class="tags-container">
-      <tag v-for="i in 4" :key="i.id" />
+    <div class="tags">
+      <p v-if="$apollo.queries.tags.loading">{{$apollo.queries.tags.loadingKey}}</p>
+      <tag v-else v-for="tag in tags" :key="tag.id" :tag="tag" />
     </div>
-    <font-awesome-icon icon="chevron-right" class="fa-2x"/>
+    <font-awesome-icon icon="chevron-right" class="fa-2x" />
   </div>
 </template>
 
 <script>
+import gql from 'graphql-tag';
+
 import Tag from './Tag.vue';
+
+const tagsQuery = gql`{tags}`;
 
 export default {
   name: 'Tags',
-  props: {
-    msg: String
+  data(){
+    return {
+      tags: []
+    }
+  },
+  apollo: {
+    tags: {
+      query: tagsQuery,
+      loadingKey: "Tags loading..."
+    }
   },
   components: {
     Tag
@@ -24,13 +37,13 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
-.tags {
-  margin: 2rem 0;
+.tags-container {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: "Baloo Thambi 2", cursive;
 }
-.tags-container {
+.tags {
   display: flex;
 }
 .bracket-icon {

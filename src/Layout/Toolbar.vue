@@ -1,12 +1,14 @@
 <template>
   <nav :class="{dark: theme === 'dark'}">
     <SearchBar />
+    <Tags />
     <SwitchTheme />
   </nav>
 </template>
 
 <script>
 import SearchBar from '../components/SearchBar.vue';
+import Tags from '../components/Tags/Tags.vue';
 import SwitchTheme from '../components/SwitchTheme.vue';
 
 export default {
@@ -18,6 +20,7 @@ export default {
   },
   components: {
     SearchBar,
+    Tags,
     SwitchTheme
   }
 }
