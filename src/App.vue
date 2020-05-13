@@ -131,20 +131,12 @@ h1 {
 }
 
 @media (min-width: 768px) {
-  // .container {
-  //   width: 75%;
-  // }
   h1 {
     font-size: 4rem;
   }
 }
 
 // testing
-body {
-  // margin: 0;
-  // padding: 0px;
-  // width: 100%;
-}
 #app {
   // height: 100%;
   min-height: 100vh;
@@ -162,7 +154,8 @@ body {
     background-color: $dark-bg;
 
     h1,
-    .search-icon {
+    .search-icon,
+    .tag-arrow {
       color: $light-bg;
     }
   }
