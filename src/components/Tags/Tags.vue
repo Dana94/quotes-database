@@ -8,7 +8,7 @@
       </div>
       <font-awesome-icon icon="chevron-right" class="fa-lg tag-arrow" />
     </template>
-    <font-awesome-icon v-else icon="tags" class="fa-lg" />
+    <font-awesome-icon v-else icon="tags" class="fa-lg" @click="showTags" />
   </div>
 </template>
 
@@ -29,6 +29,11 @@ export default {
   computed: {
     inMobile() {
       return window.innerWidth < 768
+    }
+  },
+  methods: {
+    showTags() {
+      
     }
   },
   apollo: {

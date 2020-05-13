@@ -1,15 +1,19 @@
 <template>
-  <nav :class="{dark: theme === 'dark'}">
-    <SearchBar />
-    <Tags />
-    <SwitchTheme />
-  </nav>
+  <div>
+    <nav :class="{dark: theme === 'dark'}">
+      <SearchBar />
+      <Tags />
+      <SwitchTheme />
+    </nav>
+    <TagsMenu />
+  </div>
 </template>
 
 <script>
 import SearchBar from '../components/SearchBar.vue';
 import Tags from '../components/Tags/Tags.vue';
 import SwitchTheme from '../components/SwitchTheme.vue';
+import TagsMenu from '../components/Tags/TagsMenu.vue';
 
 export default {
   name: 'Toolbar',
@@ -21,7 +25,8 @@ export default {
   components: {
     SearchBar,
     Tags,
-    SwitchTheme
+    SwitchTheme,
+    TagsMenu
   }
 }
 </script>
