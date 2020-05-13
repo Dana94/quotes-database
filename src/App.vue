@@ -48,6 +48,16 @@ export default {
               }
             }
           }`
+        } else if(this.tags.length > 0) {
+          return gql`query tagQuotes($tags: [String]!) {
+            quotesByTagNames(tags: $tags) {
+              quote
+              author {
+                name
+                description
+              }
+            }
+          }`
         }
         else {
           return gql(`{
@@ -62,10 +72,11 @@ export default {
         }
       },
       loadingKey: "Wisdom coming up...",
-      update: data => data.quotesByAuthorName || data.quotes,
+      update: data => data.quotesByAuthorName || data.quotesByTagNames || data.quotes,
       variables () {
         return {
           name: this.search,
+          tags: this.tags
         }
       },
     },
@@ -76,6 +87,9 @@ export default {
     },
     search() {
       return this.$store.getters.getSearch;
+    },
+    tags() {
+      return this.$store.getters.getTags;
     }
   },
   created() {

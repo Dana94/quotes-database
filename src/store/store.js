@@ -53,6 +53,9 @@ export default new Vuex.Store({
         },
         getSearch(state) {
             return state.search;
+        },
+        getTags(state) {
+            return state.tags;
         }
     }
 })
