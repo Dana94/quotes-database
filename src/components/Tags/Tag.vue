@@ -14,7 +14,12 @@ export default {
     },
     methods: {
         toggle() {
-            this.selected = !this.selected
+            this.selected = !this.selected;
+            if (this.selected) {
+                this.$store.dispatch('addTag', this.tag);
+            } else{
+                this.$store.dispatch('removeTag', this.tag);
+            }
         }
     }
 }
@@ -35,8 +40,8 @@ export default {
   }
 
   &.selected {
-      background-color: black;
-      color: white;
+    background-color: black;
+    color: white;
   }
 }
 </style>
