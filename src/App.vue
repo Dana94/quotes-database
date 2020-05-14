@@ -122,7 +122,7 @@ export default {
 
 h1 {
   font-family: "Lobster", cursive;
-  margin: 4rem 0;
+  margin: 2rem 0;
   font-size: 3rem;
 
   span {
@@ -132,6 +132,7 @@ h1 {
 
 @media (min-width: 768px) {
   h1 {
+    margin: 4rem 0;
     font-size: 4rem;
   }
 }

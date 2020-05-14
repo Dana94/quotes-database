@@ -8,7 +8,7 @@
       </div>
       <font-awesome-icon icon="chevron-right" class="fa-lg tag-arrow" />
     </template>
-    <font-awesome-icon v-else icon="tags" class="fa-lg" @click="showTags" />
+    <font-awesome-icon v-else icon="tags" class="fa-lg" @click="toggleMenu" />
   </div>
 </template>
 
@@ -23,7 +23,8 @@ export default {
   name: 'Tags',
   data(){
     return {
-      tags: []
+      tags: [],
+      showTags: null
     }
   },
   computed: {
@@ -32,8 +33,9 @@ export default {
     }
   },
   methods: {
-    showTags() {
-      
+    toggleMenu() {
+      this.showTags = !this.showTags
+      this.$emit('show-tags', this.showTags);
     }
   },
   apollo: {
@@ -44,6 +46,9 @@ export default {
   },
   components: {
     Tag
+  },
+  created() {
+    this.$emit('show-tags', this.showTags);
   }
 }
 </script>

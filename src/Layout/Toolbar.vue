@@ -2,10 +2,10 @@
   <div>
     <nav :class="{dark: theme === 'dark'}">
       <SearchBar />
-      <Tags />
+      <Tags @show-tags="showTagsMenu = $event"/>
       <SwitchTheme />
     </nav>
-    <TagsMenu />
+    <TagsMenu :open="showTagsMenu" />
   </div>
 </template>
 
@@ -17,6 +17,11 @@ import TagsMenu from '../components/Tags/TagsMenu.vue';
 
 export default {
   name: 'Toolbar',
+  data() {
+    return {
+      showTagsMenu: false
+    }
+  },
   computed: {
     theme() {
       return this.$store.getters.getTheme;
