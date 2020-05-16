@@ -146,7 +146,8 @@ h1 {
     background-color: $light-bg;
 
     h1,
-    .search-icon {
+    .search-icon,
+    .tags-icon {
       color: $dark-bg;
     }
   }
@@ -156,7 +157,8 @@ h1 {
 
     h1,
     .search-icon,
-    .tag-arrow {
+    .tag-arrow,
+    .tags-icon {
       color: $light-bg;
     }
   }

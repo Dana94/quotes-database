@@ -1,5 +1,5 @@
 <template>
-  <div class="menu" :class="{show: open, hide: (open !== null) && !open}">
+  <div class="menu" :class="{show: open, hide: (open !== null) && !open, dark: theme === 'dark'}">
     <tag v-for="tag in tags" :key="tag.id" :tag="tag" />
   </div>
 </template>
@@ -7,7 +7,7 @@
 <script>
 import gql from 'graphql-tag';
 
-import Tag from './Tag.vue';
+import Tag from './Tag/Tag.vue';
 
 const tagsQuery = gql`{tags}`;
 
@@ -26,6 +26,11 @@ export default {
       loadingKey: "Tags loading..."
     }
   },
+  computed: {
+    theme() {
+      return this.$store.getters.getTheme;
+    },
+  },
   components: {
     Tag
   }
@@ -33,12 +38,18 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../../assets/base.scss";
+
 .menu {
   // TODO: organize colors
   background-color: #d6e7f3;
   box-shadow: 0px 3px 7px #0000004f;
   color: white;
   transform: translateY(-63px); // need to know menu height
+
+  &.dark {
+    background-color: $dark-card;
+  }
 
   &.show {
     animation: .5s ease-in forwards slidedown;

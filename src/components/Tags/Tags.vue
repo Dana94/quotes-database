@@ -8,14 +8,14 @@
       </div>
       <font-awesome-icon icon="chevron-right" class="fa-lg tag-arrow" />
     </template>
-    <font-awesome-icon v-else icon="tags" class="fa-lg" @click="toggleMenu" />
+    <font-awesome-icon v-else icon="tags" class="fa-lg tags-icon" @click="toggleMenu" />
   </div>
 </template>
 
 <script>
 import gql from 'graphql-tag';
 
-import Tag from './Tag.vue';
+import Tag from './Tag/Tag.vue';
 
 const tagsQuery = gql`{tags}`;
 
