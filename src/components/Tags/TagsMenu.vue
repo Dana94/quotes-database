@@ -1,5 +1,9 @@
 <template>
   <div class="menu" :class="{show: open, hide: (open !== null) && !open, dark: theme === 'dark'}">
+    <button class="clear-tags" @click="clearTags">
+      <font-awesome-icon icon="times" class="fa-lg" />
+      clear
+    </button>
     <tag v-for="tag in tags" :key="tag.id" :tag="tag" />
   </div>
 </template>
@@ -24,6 +28,11 @@ export default {
     tags: {
       query: tagsQuery,
       loadingKey: "Tags loading..."
+    }
+  },
+  methods: {
+    clearTags() {
+      this.$store.dispatch('clearTags');
     }
   },
   computed: {
@@ -58,6 +67,17 @@ export default {
   &.hide {
     animation: .5s ease-in forwards slideup;
   }
+}
+
+// same as tag buttons styles - share them
+.clear-tags {
+  background-color: white;
+    color: black;
+    padding: 0.5rem;
+    border-radius: 5px;
+    margin: 1rem;
+    border: none;
+    letter-spacing: 1px;
 }
 
 @keyframes slidedown {

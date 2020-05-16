@@ -23,6 +23,9 @@ export default new Vuex.Store({
         REMOVE_TAG(state, tag) {
             const index = state.tags.indexOf(tag);
             state.tags.splice(index, 1);
+        },
+        CLEAR_TAGS(state) {
+            state.tags = [];
         }
     },
     actions: {
@@ -42,6 +45,9 @@ export default new Vuex.Store({
         },
         removeTag({commit}, tag) {
             commit('REMOVE_TAG', tag);
+        },
+        clearTags({commit}) {
+            commit('CLEAR_TAGS');
         }
         // initQuotes({commit}) {
         //     commit('INIT_QUOTES');

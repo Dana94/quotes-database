@@ -1,5 +1,5 @@
 <template>
-  <button class="tag" :class="{selected: selected}" @click="toggle">{{tag}}</button>
+  <button class="tag" :class="{selected: selected && isSelected}" @click="toggle">{{tag}}</button>
 </template>
 
 <script>
@@ -12,14 +12,34 @@ export default {
             selected: false
         }
     },
+    computed: {
+      tags() {
+        return this.$store.getters.getTags;
+      },
+      isSelected() {
+        if(this.tags.includes(this.tag)) {
+          return true;
+        }else {
+          this.toggle();
+        }
+        return false;
+      }
+    },
     methods: {
         toggle() {
             this.selected = !this.selected;
             if (this.selected) {
-                this.$store.dispatch('addTag', this.tag);
+              this.addTag();
+              // removes it twice to chec if it should show as selected or not once its cleared - FIX
             } else{
-                this.$store.dispatch('removeTag', this.tag);
+              this.removeTag();
             }
+        },
+        addTag() {
+          this.$store.dispatch('addTag', this.tag);
+        },
+        removeTag() {
+          this.$store.dispatch('removeTag', this.tag);
         }
     }
 }
