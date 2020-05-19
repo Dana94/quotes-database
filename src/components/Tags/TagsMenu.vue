@@ -59,7 +59,8 @@ export default {
   background-color: #d6e7f3;
   box-shadow: 0px 3px 7px #0000004f;
   color: white;
-  transform: translateY(-63px); // need to know menu height
+  transform: translateY(-100%);
+  padding: 0.5rem 0;
 
   &.dark {
     background-color: $dark-card;
@@ -74,20 +75,20 @@ export default {
   }
 }
 
-// same as tag buttons styles - share them
+// TODO: same as tag buttons styles - share them
 .clear-tags {
   background-color: white;
     color: black;
     padding: 0.5rem;
     border-radius: 5px;
-    margin: 1rem;
+    margin: 0.5rem 1rem;
     border: none;
     letter-spacing: 1px;
 }
 
 @keyframes slidedown {
   from {
-    transform: translateY(-63px);
+    transform: translateY(-100%);
   }
 
   to {
@@ -101,7 +102,7 @@ export default {
   }
 
   to {
-    transform: translateY(-63px);
+    transform: translateY(-100%);
   }
 }
 </style>

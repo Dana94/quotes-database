@@ -64,7 +64,7 @@ export default {
   color: black;
   padding: 0.5rem;
   border-radius: 5px;
-  margin: 1rem;
+  margin: 0.5rem 1rem;
   border: none;
   letter-spacing: 1px;
 
