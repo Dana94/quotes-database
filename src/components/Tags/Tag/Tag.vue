@@ -17,6 +17,7 @@ export default {
       tags() {
         return this.$store.getters.getTags;
       },
+      // make sure the correct color shows if the tags were all cleared at once
       isSelected() {
         if(this.tags.includes(this.tag)) {
           return true;

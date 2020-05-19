@@ -38,7 +38,6 @@ export default {
       setTimeout(() => {
         this.clear = false;
       }, 1000);
-      // this.$store.dispatch('clearTags');
     }
   },
   computed: {
