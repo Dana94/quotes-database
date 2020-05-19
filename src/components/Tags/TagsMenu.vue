@@ -4,7 +4,7 @@
       <font-awesome-icon icon="times" class="fa-lg" />
       clear
     </button>
-    <tag v-for="tag in tags" :key="tag.id" :tag="tag" />
+    <tag v-for="tag in tags" :key="tag.id" :tag="tag" :clear="clear" />
   </div>
 </template>
 
@@ -21,7 +21,8 @@ export default {
   },
   data () {
     return {
-      tags: []
+      tags: [],
+      clear: false
     }
   },
   apollo: {
@@ -32,7 +33,12 @@ export default {
   },
   methods: {
     clearTags() {
-      this.$store.dispatch('clearTags');
+      this.clear = true;
+      // ??
+      setTimeout(() => {
+        this.clear = false;
+      }, 1000);
+      // this.$store.dispatch('clearTags');
     }
   },
   computed: {

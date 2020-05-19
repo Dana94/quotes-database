@@ -5,12 +5,13 @@
 <script>
 export default {
     props: {
-        tag: String
+      tag: String,
+      clear: Boolean
     },
     data() {
-        return {
-            selected: false
-        }
+      return {
+        selected: false
+      }
     },
     computed: {
       tags() {
@@ -30,7 +31,6 @@ export default {
             this.selected = !this.selected;
             if (this.selected) {
               this.addTag();
-              // removes it twice to chec if it should show as selected or not once its cleared - FIX
             } else{
               this.removeTag();
             }
@@ -39,8 +39,20 @@ export default {
           this.$store.dispatch('addTag', this.tag);
         },
         removeTag() {
+          // tag is selected to be removed
+          if(!this.clear) {
+            console.log(this.tag, 'in removeTag')
+            this.$store.dispatch('removeTag', this.tag);
+          }
+        }
+    },
+    watch: {
+      clear() {
+        // all tags need to remove themselves
+        if(this.clear) {
           this.$store.dispatch('removeTag', this.tag);
         }
+      }
     }
 }
 </script>
