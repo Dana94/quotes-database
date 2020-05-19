@@ -7,7 +7,8 @@ export default new Vuex.Store({
     state: {
         theme: 'light',
         quotes: [],
-        search: ''
+        search: '',
+        tags: []
     },
     mutations: {
         SET_THEME(state, theme) {
@@ -15,6 +16,13 @@ export default new Vuex.Store({
         },
         SET_SEARCH(state, search) {
             state.search = search;
+        },
+        ADD_TAG(state, tag) {
+            state.tags.push(tag);
+        },
+        REMOVE_TAG(state, tag) {
+            const index = state.tags.indexOf(tag);
+            state.tags.splice(index, 1);
         }
     },
     actions: {
@@ -28,6 +36,12 @@ export default new Vuex.Store({
         },
         setSearch({commit}, search) {
             commit('SET_SEARCH', search);
+        },
+        addTag({commit}, tag) {
+            commit('ADD_TAG', tag);
+        },
+        removeTag({commit}, tag) {
+            commit('REMOVE_TAG', tag);
         }
         // initQuotes({commit}) {
         //     commit('INIT_QUOTES');
@@ -39,6 +53,9 @@ export default new Vuex.Store({
         },
         getSearch(state) {
             return state.search;
+        },
+        getTags(state) {
+            return state.tags;
         }
     }
 })

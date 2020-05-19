@@ -48,6 +48,16 @@ export default {
               }
             }
           }`
+        } else if(this.tags.length > 0) {
+          return gql`query tagQuotes($tags: [String]!) {
+            quotesByTagNames(tags: $tags) {
+              quote
+              author {
+                name
+                description
+              }
+            }
+          }`
         }
         else {
           return gql(`{
@@ -62,10 +72,11 @@ export default {
         }
       },
       loadingKey: "Wisdom coming up...",
-      update: data => data.quotesByAuthorName || data.quotes,
+      update: data => data.quotesByAuthorName || data.quotesByTagNames || data.quotes,
       variables () {
         return {
           name: this.search,
+          tags: this.tags
         }
       },
     },
@@ -76,6 +87,9 @@ export default {
     },
     search() {
       return this.$store.getters.getSearch;
+    },
+    tags() {
+      return this.$store.getters.getTags;
     }
   },
   created() {
@@ -108,7 +122,7 @@ export default {
 
 h1 {
   font-family: "Lobster", cursive;
-  margin: 4rem 0;
+  margin: 2rem 0;
   font-size: 3rem;
 
   span {
@@ -117,20 +131,13 @@ h1 {
 }
 
 @media (min-width: 768px) {
-  // .container {
-  //   width: 75%;
-  // }
   h1 {
+    margin: 4rem 0;
     font-size: 4rem;
   }
 }
 
 // testing
-body {
-  // margin: 0;
-  // padding: 0px;
-  // width: 100%;
-}
 #app {
   // height: 100%;
   min-height: 100vh;
@@ -139,7 +146,8 @@ body {
     background-color: $light-bg;
 
     h1,
-    .search-icon {
+    .search-icon,
+    .tags-icon {
       color: $dark-bg;
     }
   }
@@ -148,7 +156,9 @@ body {
     background-color: $dark-bg;
 
     h1,
-    .search-icon {
+    .search-icon,
+    .tag-arrow,
+    .tags-icon {
       color: $light-bg;
     }
   }

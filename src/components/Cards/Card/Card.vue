@@ -121,7 +121,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../../assets/base.scss";
+@import "../../../assets/base.scss";
 
 .fa-arrow-left {
   position: absolute;

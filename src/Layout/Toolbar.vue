@@ -1,16 +1,27 @@
 <template>
-  <nav :class="{dark: theme === 'dark'}">
-    <SearchBar />
-    <SwitchTheme />
-  </nav>
+  <div>
+    <nav :class="{dark: theme === 'dark'}">
+      <SearchBar />
+      <Tags @show-tags="showTagsMenu = $event"/>
+      <SwitchTheme />
+    </nav>
+    <TagsMenu :open="showTagsMenu" />
+  </div>
 </template>
 
 <script>
 import SearchBar from '../components/SearchBar.vue';
+import Tags from '../components/Tags/Tags.vue';
 import SwitchTheme from '../components/SwitchTheme.vue';
+import TagsMenu from '../components/Tags/TagsMenu.vue';
 
 export default {
   name: 'Toolbar',
+  data() {
+    return {
+      showTagsMenu: false
+    }
+  },
   computed: {
     theme() {
       return this.$store.getters.getTheme;
@@ -18,7 +29,9 @@ export default {
   },
   components: {
     SearchBar,
-    SwitchTheme
+    Tags,
+    SwitchTheme,
+    TagsMenu
   }
 }
 </script>
