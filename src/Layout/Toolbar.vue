@@ -40,8 +40,8 @@ export default {
 @import "../assets/base.scss";
 
 nav {
-  background-color: #d6e7f3;
-  box-shadow: 0px 3px 7px #0000004f;
+  background-color: $light-menu;
+  box-shadow: $nav-box-shadow;
   height: 3rem;
   position: sticky;
   top: 0;

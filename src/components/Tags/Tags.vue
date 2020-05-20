@@ -51,20 +51,17 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
+@import "../../assets/base.scss";
+
 .tags-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "Baloo Thambi 2", cursive;
+  font-family: $body-font-family;
 }
 .tags {
   display: flex;
-}
-.bracket-icon {
-  width: 2rem;
-  margin: 0 1rem; /* temp */
 }
 
 .tags-icon {

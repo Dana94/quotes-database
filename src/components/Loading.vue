@@ -37,7 +37,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "Baloo Thambi 2", cursive;
+  font-family: $body-font-family;
   font-size: 1.5rem;
   animation: 2s ease-in 1s infinite levitate;
 

@@ -29,6 +29,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../assets/base.scss";
+
 .search {
   display: flex;
   margin-left: 1rem;
@@ -41,7 +43,7 @@ input {
   border-radius: 10px;
   padding: 0.5rem;
   justify-content: center;
-  font-family: "Baloo Thambi 2", cursive;
+  font-family: $body-font-family;
 }
 .search-icon {
   align-self: center;

@@ -14,7 +14,6 @@ import VueApollo from 'vue-apollo'
 Vue.use(VueApollo);
 
 const apolloClient = new ApolloClient({
-  // You should use an absolute URL here
   uri: 'https://hopeful-goldberg-bf6881.netlify.app/'
 });
 
