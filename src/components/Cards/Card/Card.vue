@@ -137,11 +137,10 @@ export default {
 
 .card {
   position: relative;
-  // width: 20rem;
   margin: 2rem 3rem;
   letter-spacing: 1px;
 
-  font-family: "Baloo Thambi 2", cursive;
+  font-family: $body-font-family;
   font-size: 1.2rem;
 
   &.single {
@@ -153,7 +152,6 @@ export default {
     display: none;
   }
 
-  // changes in dark theme
   &.dark {
     color: $dark-card-text;
 

@@ -107,39 +107,9 @@ export default {
 @import "./assets/base.scss";
 
 #app {
-  // font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-
-  // margin-top: 60px;
-}
-
-.container {
-  width: 90%;
-  margin: 0 auto;
-}
-
-h1 {
-  font-family: "Lobster", cursive;
-  margin: 2rem 0;
-  font-size: 3rem;
-
-  span {
-    margin-left: 5rem;
-  }
-}
-
-@media (min-width: 768px) {
-  h1 {
-    margin: 4rem 0;
-    font-size: 4rem;
-  }
-}
-
-// testing
-#app {
-  // height: 100%;
   min-height: 100vh;
 
   &.light {
@@ -161,6 +131,28 @@ h1 {
     .tags-icon {
       color: $light-bg;
     }
+  }
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+h1 {
+  font-family: "Lobster", cursive;
+  margin: 2rem 0;
+  font-size: 3rem;
+
+  span {
+    margin-left: 5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  h1 {
+    margin: 4rem 0;
+    font-size: 4rem;
   }
 }
 </style>
