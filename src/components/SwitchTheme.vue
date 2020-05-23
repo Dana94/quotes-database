@@ -11,16 +11,14 @@
 
 export default {
   name: 'SwitchTheme',
-  data() {
-    return {
-      theme: localStorage.getItem('theme') || 'light'
-    }
-  },
   methods: {
     toggleTheme () {
-      this.theme = this.theme === 'light' ? 'dark' : 'light';
-      localStorage.setItem('theme', this.theme);
-      this.$store.dispatch('setTheme', this.theme);
+      this.$store.dispatch('setTheme', this.theme === 'light' ? 'dark' : 'light');
+    }
+  },
+  computed: {
+    theme() {
+      return this.$store.getters.getTheme;
     }
   }
 }
