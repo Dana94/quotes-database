@@ -1,11 +1,11 @@
 <template>
   <div class="tags-container" v-if="!inMobile">
-      <font-awesome-icon icon="chevron-left" class="fa-lg tag-arrow" />
-      <div class="tags">
-        <p v-if="$apollo.queries.tags.loading">{{$apollo.queries.tags.loadingKey}}</p>
-        <tag v-else v-for="tag in tags" :key="tag.id" :tag="tag" />
-      </div>
-      <font-awesome-icon icon="chevron-right" class="fa-lg tag-arrow" />
+    <font-awesome-icon icon="chevron-left" class="fa-lg tag-arrow" />
+    <div class="tags">
+      <p v-if="$apollo.queries.tags.loading">{{$apollo.queries.tags.loadingKey}}</p>
+      <tag v-else v-for="tag in tags" :key="tag.id" :tag="tag">{{tag}}</tag>
+    </div>
+    <font-awesome-icon icon="chevron-right" class="fa-lg tag-arrow" />
   </div>
   <font-awesome-icon v-else icon="tags" class="fa-lg tags-icon" @click="toggleMenu" />
 </template>
