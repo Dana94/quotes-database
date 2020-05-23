@@ -1,16 +1,21 @@
 <template>
-  <button class="tag" :class="{selected: selected && isSelected}" @click="toggle">{{tag}}</button>
+  <button v-if="tag === 'clear'" class="clear-tags" @click="clearTags">
+    <slot />
+  </button>
+  <button v-else class="tag" :class="{selected: selected && isSelected}" @click="toggle">
+    <slot />
+  </button>
 </template>
 
 <script>
 export default {
     props: {
-      tag: String,
-      clear: Boolean
+      tag: String
     },
     data() {
       return {
-        selected: false
+        selected: false,
+        clear: false
       }
     },
     computed: {
@@ -45,6 +50,13 @@ export default {
             console.log(this.tag, 'in removeTag')
             this.$store.dispatch('removeTag', this.tag);
           }
+        },
+        clearTags() {
+          this.clear = true;
+          // ??
+          setTimeout(() => {
+            this.clear = false;
+          }, 1000);
         }
     },
     watch: {
@@ -59,7 +71,8 @@ export default {
 </script>
 
 <style lang="scss">
-.tag {
+.tag,
+.clear-tags {
   background-color: white;
   color: black;
   padding: 0.5rem;
@@ -71,10 +84,10 @@ export default {
   &:hover {
     cursor: pointer;
   }
+}
 
-  &.selected {
-    background-color: black;
-    color: white;
-  }
+.tag.selected {
+  background-color: black;
+  color: white;
 }
 </style>

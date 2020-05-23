@@ -1,10 +1,12 @@
 <template>
   <div class="menu" :class="{show: open, hide: (open !== null) && !open, dark: theme === 'dark'}">
-    <button class="clear-tags" @click="clearTags">
+    <tag tag="clear">
       <font-awesome-icon icon="times" class="fa-lg" />
       clear
-    </button>
-    <tag v-for="tag in tags" :key="tag.id" :tag="tag" :clear="clear" />
+    </tag>
+    <tag v-for="tag in tags" :key="tag.id" :tag="tag">
+      {{tag}}
+    </tag>
   </div>
 </template>
 
@@ -22,22 +24,12 @@ export default {
   data () {
     return {
       tags: [],
-      clear: false
     }
   },
   apollo: {
     tags: {
       query: tagsQuery,
       loadingKey: "Tags loading..."
-    }
-  },
-  methods: {
-    clearTags() {
-      this.clear = true;
-      // ??
-      setTimeout(() => {
-        this.clear = false;
-      }, 1000);
     }
   },
   computed: {
@@ -66,23 +58,12 @@ export default {
   }
 
   &.show {
-    animation: .5s ease-in forwards slidedown;
+    animation: 0.5s ease-in forwards slidedown;
   }
 
   &.hide {
-    animation: .5s ease-in forwards slideup;
+    animation: 0.5s ease-in forwards slideup;
   }
-}
-
-// TODO: same as tag buttons styles - share them
-.clear-tags {
-  background-color: white;
-    color: black;
-    padding: 0.5rem;
-    border-radius: 5px;
-    margin: 0.5rem 1rem;
-    border: none;
-    letter-spacing: 1px;
 }
 
 @keyframes slidedown {

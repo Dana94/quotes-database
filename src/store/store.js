@@ -13,6 +13,7 @@ export default new Vuex.Store({
     mutations: {
         SET_THEME(state, theme) {
             state.theme = theme;
+            localStorage.setItem('theme', theme);
         },
         SET_SEARCH(state, search) {
             state.search = search;
@@ -29,18 +30,20 @@ export default new Vuex.Store({
         setTheme({ commit }, theme) {
             commit('SET_THEME', theme);
         },
-        initTheme({commit}) {
-            if(localStorage.getItem('theme')) {
+        initTheme({ commit }) {
+            if (localStorage.getItem('theme')) {
                 commit('SET_THEME', localStorage.getItem('theme'));
+            } else {
+                commit('SET_THEME', 'light');
             }
         },
-        setSearch({commit}, search) {
+        setSearch({ commit }, search) {
             commit('SET_SEARCH', search);
         },
-        addTag({commit}, tag) {
+        addTag({ commit }, tag) {
             commit('ADD_TAG', tag);
         },
-        removeTag({commit}, tag) {
+        removeTag({ commit }, tag) {
             commit('REMOVE_TAG', tag);
         }
         // initQuotes({commit}) {
