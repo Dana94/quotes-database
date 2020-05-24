@@ -47,7 +47,6 @@ export default {
         removeTag() {
           // tag is selected to be removed
           if(!this.clear) {
-            console.log(this.tag, 'in removeTag')
             this.$store.dispatch('removeTag', this.tag);
           }
         },
