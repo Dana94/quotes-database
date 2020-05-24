@@ -25,10 +25,6 @@ export default {
 </script>
 
 <style lang="scss">
-$dark: #c5b9ef59;
-$light: #abc8ff;
-$white: #ffffff;
-
 .theme-switch {
   margin-right: 1rem;
   display: flex;

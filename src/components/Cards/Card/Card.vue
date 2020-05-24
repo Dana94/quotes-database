@@ -1,33 +1,14 @@
 <template>
-  <div class="card" :class="{
-      dark: theme === 'dark',
-      single: singleQuote
-    }">
+  <div class="card" :class="{dark: theme === 'dark'}">
     <div
       class="under-card"
-      :class="{
-        blue: id % 5 === 0,
-        green: id % 4 === 0,
-        yellow: id % 3 === 0,
-        purple: id % 3 === 0,
-        orange: id % 2 === 0,
-        pink: id % 2 === 0,
-        red: id < 2 || id % 1 === 0
-      }"
+      :class="cardColor"
     ></div>
     <div class="primary-card">
       <font-awesome-icon
         icon="quote-left"
         class="fa-2x quote-icon"
-        :class="{
-          blue: id % 5 === 0,
-          green: id % 4 === 0,
-          yellow: id % 3 === 0,
-          purple: id % 3 === 0,
-          orange: id % 2 === 0,
-          pink: id % 2 === 0,
-          red: id < 2 || id % 1 === 0
-        }"
+        :class="cardColor"
       />
       <!-- desktop -->
       <template v-if="!inMobile">
@@ -57,19 +38,7 @@
           </a>
         </p>
       </template>
-      <font-awesome-icon
-        icon="quote-right"
-        class="fa-2x quote-icon"
-        :class="{
-          blue: id % 5 === 0,
-          green: id % 4 === 0,
-          yellow: id % 3 === 0,
-          purple: id % 3 === 0,
-          orange: id % 2 === 0,
-          pink: id % 2 === 0,
-          red: id < 2 || id % 1 === 0
-        }"
-      />
+      <font-awesome-icon icon="quote-right" class="fa-2x quote-icon" :class="cardColor" />
       <footer role="contentinfo">
         <p>~ {{quote.author.name}} ~</p>
         <p>{{quote.author.description}}</p>
@@ -89,10 +58,7 @@ export default {
   name: 'Card',
   props: {
     id: Number,
-    quote: Object,
-    singleQuote: {
-      default: false
-    }
+    quote: Object
   },
   data() {
     return {
@@ -104,7 +70,7 @@ export default {
       return this.$store.getters.getTheme;
     },
     longQuote() {
-      return this.quote.quote.length > 100; // 260; TODO: change back
+      return this.quote.quote.length > 260;
     },
     twitterLink() {
       return 'https://twitter.com/intent/tweet?text="' + encodeURI(this.quote.quote) + '" -' + encodeURI(this.quote.author.name);
@@ -115,6 +81,22 @@ export default {
     },
     inMobile() {
       return window.innerWidth < 768
+    },
+    cardColor() {
+        if (this.id % 5 === 0){
+          return 'blue';
+        } else if (this.id % 4 === 0) {
+          return 'green';
+        }
+        else if (this.id % 3 === 0) {
+          return 'yellow purple';
+        }
+        else if (this.id % 2 === 0) {
+          return 'orange pink';
+        }
+        else {
+          return 'red'
+        }
     }
   }
 }
@@ -142,15 +124,6 @@ export default {
 
   font-family: $body-font-family;
   font-size: 1.2rem;
-
-  &.single {
-    width: 100%;
-    margin: 0;
-  }
-
-  &.hide {
-    display: none;
-  }
 
   &.dark {
     color: $dark-card-text;
