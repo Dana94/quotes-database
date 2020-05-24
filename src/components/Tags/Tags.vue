@@ -27,12 +27,12 @@ export default {
   },
   computed: {
     inMobile() {
-      return window.innerWidth < 768
+      return window.innerWidth < 768;
     }
   },
   methods: {
     toggleMenu() {
-      this.showTags = !this.showTags
+      this.showTags = !this.showTags;
       this.$emit('show-tags', this.showTags);
     }
   },
@@ -60,6 +60,7 @@ export default {
   align-items: center;
   font-family: $body-font-family;
 }
+
 .tags {
   display: flex;
 }
