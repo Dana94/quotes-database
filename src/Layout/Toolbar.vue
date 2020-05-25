@@ -2,7 +2,7 @@
   <div>
     <nav :class="{dark: theme === 'dark'}">
       <SearchBar />
-      <Tags @show-tags="showTagsMenu = $event"/>
+      <font-awesome-icon icon="tags" class="fa-lg tags-icon" @click="showTagsMenu = !showTagsMenu" />
       <SwitchTheme />
     </nav>
     <TagsMenu :open="showTagsMenu" />
@@ -11,7 +11,6 @@
 
 <script>
 import SearchBar from '../components/SearchBar.vue';
-import Tags from '../components/Tags/Tags.vue';
 import SwitchTheme from '../components/SwitchTheme.vue';
 import TagsMenu from '../components/Tags/TagsMenu.vue';
 
@@ -19,7 +18,7 @@ export default {
   name: 'Toolbar',
   data() {
     return {
-      showTagsMenu: false
+      showTagsMenu: null
     }
   },
   computed: {
@@ -29,7 +28,6 @@ export default {
   },
   components: {
     SearchBar,
-    Tags,
     SwitchTheme,
     TagsMenu
   }
@@ -52,6 +50,11 @@ nav {
 
   &.dark {
     background-color: $dark-card;
+  }
+
+  .tags-icon {
+    margin: auto;
+    margin-right: 2rem;
   }
 }
 </style>
