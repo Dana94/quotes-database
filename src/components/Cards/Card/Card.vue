@@ -203,7 +203,7 @@ export default {
 }
 
 .quote-icon {
-  width: 2rem;
+  width: 3rem;
 }
 
 .icon-container {
@@ -233,9 +233,6 @@ a.show-more {
 }
 
 @media (min-width: 768px) {
-  .quote-icon {
-    width: 2rem;
-  }
   .card {
     max-width: 50%;
   }
