@@ -2,17 +2,17 @@
   <div class="loading-message" :class="{dark: theme === 'dark'}">
     <img
       v-if="theme === 'light'"
-      src="../assets/svgs/dark/blue/quotes-left-dark-blue.svg"
+      src="../assets/svgs/light/red/quotes-left-light-red.svg"
       class="quote-icon"
     />
-    <img v-else src="../assets/svgs/dark/blue/quotes-left-dark-blue.svg" class="quote-icon" />
+    <img v-else src="../assets/svgs/dark/pink/quotes-left-dark-pink.svg" class="quote-icon" />
     {{message}}
     <img
       v-if="theme === 'light'"
-      src="../assets/svgs/dark/blue/quotes-left-dark-blue.svg"
+      src="../assets/svgs/light/red/quotes-right-light-red.svg"
       class="quote-icon"
     />
-    <img v-else src="../assets/svgs/dark/blue/quotes-left-dark-blue.svg" class="quote-icon" />
+    <img v-else src="../assets/svgs/dark/pink/quotes-right-dark-pink.svg" class="quote-icon" />
   </div>
 </template>
 
@@ -47,8 +47,8 @@ export default {
 }
 
 img.quote-icon {
-  height: 5rem;
-  width: 5rem;
+  height: 4rem;
+  width: 4rem;
   margin: 0 1rem;
 }
 

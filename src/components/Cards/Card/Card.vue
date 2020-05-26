@@ -5,13 +5,8 @@
       :class="cardColor"
     ></div>
     <div class="primary-card">
-      <!-- <font-awesome-icon
-        icon="quote-left"
-        class="fa-2x quote-icon"
-        :class="cardColor"
-      /> -->
       <img
-      src="../../../assets/svgs/dark/blue/quotes-left-dark-blue.svg"
+      :src="quoteIconLeftSrc"
       class="quote-icon"
     />
       <!-- desktop -->
@@ -42,7 +37,10 @@
           </a>
         </p>
       </template>
-      <font-awesome-icon icon="quote-right" class="fa-2x quote-icon" :class="cardColor" />
+      <img
+      :src="quoteIconRightSrc"
+      class="quote-icon"
+    />
       <footer role="contentinfo">
         <p>~ {{quote.author.name}} ~</p>
         <p>{{quote.author.description}}</p>
@@ -87,20 +85,28 @@ export default {
       return window.innerWidth < 768
     },
     cardColor() {
+      let color = 'red';
         if (this.id % 5 === 0){
-          return 'blue';
+          color = 'blue';
         } else if (this.id % 4 === 0) {
-          return 'green';
+          color = 'green';
         }
         else if (this.id % 3 === 0) {
-          return 'yellow purple';
+          color = this.theme === 'light' ? 'yellow' : 'purple';
         }
         else if (this.id % 2 === 0) {
-          return 'orange pink';
+          color = this.theme === 'light' ? 'orange' : 'pink';
         }
         else {
-          return 'red'
+          color = 'red'
         }
+        return color;
+    },
+    quoteIconLeftSrc() {
+      return require(`../../../assets/svgs/${this.theme}/${this.cardColor}/quotes-left-${this.theme}-${this.cardColor}.svg`);
+    },
+    quoteIconRightSrc() {
+      return require(`../../../assets/svgs/${this.theme}/${this.cardColor}/quotes-right-${this.theme}-${this.cardColor}.svg`);
     }
   }
 }
@@ -134,24 +140,6 @@ export default {
 
     .primary-card {
       background-color: $dark-card;
-
-      .quote-icon {
-        &.red {
-          color: $dark-red;
-        }
-        &.green {
-          color: $dark-green;
-        }
-        &.blue {
-          color: $dark-blue;
-        }
-        &.pink {
-          color: $dark-pink;
-        }
-        &.purple {
-          color: $dark-purple;
-        }
-      }
     }
 
     .under-card {
@@ -216,22 +204,6 @@ export default {
 
 .quote-icon {
   width: 2rem;
-
-  &.red {
-    color: $light-red;
-  }
-  &.orange {
-    color: $light-orange;
-  }
-  &.yellow {
-    color: $light-yellow;
-  }
-  &.green {
-    color: $light-green;
-  }
-  &.blue {
-    color: $light-blue;
-  }
 }
 
 .icon-container {
@@ -262,7 +234,7 @@ a.show-more {
 
 @media (min-width: 768px) {
   .quote-icon {
-    width: 3rem;
+    width: 2rem;
   }
   .card {
     max-width: 50%;
