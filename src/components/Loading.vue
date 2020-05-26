@@ -2,17 +2,17 @@
   <div class="loading-message" :class="{dark: theme === 'dark'}">
     <img
       v-if="theme === 'light'"
-      src="../assets/svgs/double-quote-open-color-light.svg"
+      src="../assets/svgs/light/red/quotes-left-light-red.svg"
       class="quote-icon"
     />
-    <img v-else src="../assets/svgs/double-quote-open-color-dark.svg" class="quote-icon" />
+    <img v-else src="../assets/svgs/dark/pink/quotes-left-dark-pink.svg" class="quote-icon" />
     {{message}}
     <img
       v-if="theme === 'light'"
-      src="../assets/svgs/double-quote-close-color-light.svg"
+      src="../assets/svgs/light/red/quotes-right-light-red.svg"
       class="quote-icon"
     />
-    <img v-else src="../assets/svgs/double-quote-close-color-dark.svg" class="quote-icon" />
+    <img v-else src="../assets/svgs/dark/pink/quotes-right-dark-pink.svg" class="quote-icon" />
   </div>
 </template>
 
@@ -30,7 +30,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "../assets/base.scss";
 
 .loading-message {
@@ -47,8 +47,8 @@ export default {
 }
 
 img.quote-icon {
-  height: 5rem;
-  width: 5rem;
+  height: 4rem;
+  width: 4rem;
   margin: 0 1rem;
 }
 
