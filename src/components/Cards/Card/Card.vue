@@ -5,11 +5,15 @@
       :class="cardColor"
     ></div>
     <div class="primary-card">
-      <font-awesome-icon
+      <!-- <font-awesome-icon
         icon="quote-left"
         class="fa-2x quote-icon"
         :class="cardColor"
-      />
+      /> -->
+      <img
+      src="../../../assets/svgs/dark/blue/quotes-left-dark-blue.svg"
+      class="quote-icon"
+    />
       <!-- desktop -->
       <template v-if="!inMobile">
         <!-- all quotes show -->

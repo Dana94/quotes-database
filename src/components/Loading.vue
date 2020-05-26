@@ -2,17 +2,17 @@
   <div class="loading-message" :class="{dark: theme === 'dark'}">
     <img
       v-if="theme === 'light'"
-      src="../assets/svgs/double-quote-open-color-light.svg"
+      src="../assets/svgs/dark/blue/quotes-left-dark-blue.svg"
       class="quote-icon"
     />
-    <img v-else src="../assets/svgs/double-quote-open-color-dark.svg" class="quote-icon" />
+    <img v-else src="../assets/svgs/dark/blue/quotes-left-dark-blue.svg" class="quote-icon" />
     {{message}}
     <img
       v-if="theme === 'light'"
-      src="../assets/svgs/double-quote-close-color-light.svg"
+      src="../assets/svgs/dark/blue/quotes-left-dark-blue.svg"
       class="quote-icon"
     />
-    <img v-else src="../assets/svgs/double-quote-close-color-dark.svg" class="quote-icon" />
+    <img v-else src="../assets/svgs/dark/blue/quotes-left-dark-blue.svg" class="quote-icon" />
   </div>
 </template>
 
