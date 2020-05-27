@@ -1,14 +1,8 @@
 <template>
   <div class="card" :class="{dark: theme === 'dark'}">
-    <div
-      class="under-card"
-      :class="cardColor"
-    ></div>
+    <div class="under-card" :class="cardColor"></div>
     <div class="primary-card">
-      <img
-      :src="quoteIconLeftSrc"
-      class="quote-icon"
-    />
+      <img :src="quoteIconLeftSrc" class="quote-icon" />
       <!-- desktop -->
       <template v-if="!inMobile">
         <!-- all quotes show -->
@@ -37,10 +31,7 @@
           </a>
         </p>
       </template>
-      <img
-      :src="quoteIconRightSrc"
-      class="quote-icon"
-    />
+      <img :src="quoteIconRightSrc" class="quote-icon" />
       <footer role="contentinfo">
         <p>~ {{quote.author.name}} ~</p>
         <p>{{quote.author.description}}</p>

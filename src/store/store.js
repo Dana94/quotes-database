@@ -31,7 +31,7 @@ export default new Vuex.Store({
             commit('SET_THEME', theme);
         },
         initTheme({ commit }) {
-            if (localStorage.getItem('theme')) {
+            if (localStorage.getItem('theme') === 'light' || localStorage.getItem('theme') === 'dark') {
                 commit('SET_THEME', localStorage.getItem('theme'));
             } else {
                 commit('SET_THEME', 'light');
