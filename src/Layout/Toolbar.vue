@@ -2,6 +2,7 @@
   <div>
     <nav :class="{dark: theme === 'dark'}">
       <SearchBar />
+      <Dropdown />
       <font-awesome-icon icon="tags" class="fa-lg tags-icon" @click="showTagsMenu = !showTagsMenu" />
       <SwitchTheme />
     </nav>
@@ -11,6 +12,7 @@
 
 <script>
 import SearchBar from '../components/SearchBar.vue';
+import Dropdown from '../components/Dropdown.vue';
 import SwitchTheme from '../components/SwitchTheme.vue';
 import TagsMenu from '../components/Tags/TagsMenu.vue';
 
@@ -28,6 +30,7 @@ export default {
   },
   components: {
     SearchBar,
+    Dropdown,
     SwitchTheme,
     TagsMenu
   }
