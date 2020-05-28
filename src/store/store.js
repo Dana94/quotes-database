@@ -8,6 +8,7 @@ export default new Vuex.Store({
         theme: 'light',
         quotes: [],
         search: '',
+        authorId: null,
         tags: []
     },
     mutations: {
@@ -17,6 +18,9 @@ export default new Vuex.Store({
         },
         SET_SEARCH(state, search) {
             state.search = search;
+        },
+        SET_AUTHOR(state, authorId) {
+            state.authorId = authorId;
         },
         ADD_TAG(state, tag) {
             state.tags.push(tag);
@@ -40,6 +44,9 @@ export default new Vuex.Store({
         setSearch({ commit }, search) {
             commit('SET_SEARCH', search);
         },
+        setAuthor({ commit }, authorId) {
+            commit('SET_AUTHOR', authorId);
+        },
         addTag({ commit }, tag) {
             commit('ADD_TAG', tag);
         },
@@ -56,6 +63,9 @@ export default new Vuex.Store({
         },
         getSearch(state) {
             return state.search;
+        },
+        getAuthor(state) {
+            return state.authorId;
         },
         getTags(state) {
             return state.tags;

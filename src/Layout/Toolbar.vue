@@ -1,9 +1,15 @@
 <template>
   <div>
     <nav :class="{dark: theme === 'dark'}">
-      <SearchBar />
+      <!-- <SearchBar /> -->
       <Dropdown />
-      <font-awesome-icon icon="tags" class="fa-lg tags-icon" @click="showTagsMenu = !showTagsMenu" />
+      <font-awesome-icon
+        tabindex="0"
+        icon="tags"
+        class="fa-lg tags-icon"
+        @click="showTagsMenu = !showTagsMenu"
+        @keydown.enter="showTagsMenu = !showTagsMenu"
+      />
       <SwitchTheme />
     </nav>
     <TagsMenu :open="showTagsMenu" />
@@ -11,7 +17,7 @@
 </template>
 
 <script>
-import SearchBar from '../components/SearchBar.vue';
+// import SearchBar from '../components/SearchBar.vue';
 import Dropdown from '../components/Dropdown.vue';
 import SwitchTheme from '../components/SwitchTheme.vue';
 import TagsMenu from '../components/Tags/TagsMenu.vue';
@@ -29,7 +35,7 @@ export default {
     },
   },
   components: {
-    SearchBar,
+    // SearchBar,
     Dropdown,
     SwitchTheme,
     TagsMenu
