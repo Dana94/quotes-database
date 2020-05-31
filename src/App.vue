@@ -48,7 +48,7 @@ export default {
         //       }
         //     }
         //   }`
-        if (this.authorSelected) {
+        if (this.authorSelected !== null) {
           return gql`query authorQuotes($id: Int!) {
             quotesByAuthorId(authorId: $id) {
               quote

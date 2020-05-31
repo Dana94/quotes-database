@@ -1,7 +1,7 @@
 <template>
   <div class="dropdown">
     <select v-model="authorSelected">
-      <option value="null">All authors</option>
+      <option :value="null">All authors</option>
       <option v-for="author in authors" :value="author.id" :key="author.id">{{author.name}}</option>
     </select>
   </div>
@@ -21,7 +21,7 @@ export default {
     name: 'Dropdown',
     data() {
         return {
-            authorSelected: null,
+            authorSelected: "null",
             authors: []
         }
     },
