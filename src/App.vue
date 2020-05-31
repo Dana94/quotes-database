@@ -38,9 +38,19 @@ export default {
   apollo: {
     quotes: {
       query () {
-        if (this.search) {
-          return gql`query authorQuotes($name: String!) {
-            quotesByAuthorName(authorName: $name) {
+        // if (this.search) {
+        //   return gql`query authorQuotes($name: String!) {
+        //     quotesByAuthorName(authorName: $name) {
+        //       quote
+        //       author {
+        //         name
+        //         description
+        //       }
+        //     }
+        //   }`
+        if (this.authorSelected !== null) {
+          return gql`query authorQuotes($id: Int!) {
+            quotesByAuthorId(authorId: $id) {
               quote
               author {
                 name
@@ -72,10 +82,11 @@ export default {
         }
       },
       loadingKey: "Wisdom coming up...",
-      update: data => data.quotesByAuthorName || data.quotesByTagNames || data.quotes,
+      update: data => data.quotesByAuthorId || data.quotesByTagNames || data.quotes,
       variables () {
         return {
-          name: this.search,
+          // name: this.search,
+          id: this.authorSelected,
           tags: this.tags
         }
       },
@@ -87,6 +98,9 @@ export default {
     },
     search() {
       return this.$store.getters.getSearch;
+    },
+    authorSelected() {
+      return this.$store.getters.getAuthor;
     },
     tags() {
       return this.$store.getters.getTags;
