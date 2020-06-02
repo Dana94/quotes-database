@@ -44,12 +44,19 @@ export default {
 
 .dropdown {
   display: flex;
-  margin: 0.5rem;
+  margin-bottom: 1rem;
 
   select {
     border: none;
     border-radius: 10px;
     padding: 0.5rem;
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .dropdown {
+    margin: 0;
   }
 }
 </style>

@@ -1,10 +1,10 @@
 <template>
   <div class="menu" :class="{show: open, hide: (open !== null) && !open, dark: theme === 'dark'}">
-    <tag tag="clear">
+    <tag tag="clear" :focusable="open">
       <font-awesome-icon icon="times" class="fa-lg" />
       clear
     </tag>
-    <tag v-for="tag in tags" :key="tag.id" :tag="tag">
+    <tag v-for="tag in tags" :key="tag.id" :tag="tag" :focusable="open">
       {{tag}}
     </tag>
   </div>

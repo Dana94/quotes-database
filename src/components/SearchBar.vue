@@ -37,7 +37,7 @@ export default {
 }
 input {
   display: flex;
-  margin: 0.5rem;
+  margin-bottom: 1rem;
   align-self: stretch;
   border: none;
   border-radius: 10px;
