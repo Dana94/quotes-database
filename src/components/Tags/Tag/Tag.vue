@@ -1,8 +1,8 @@
 <template>
-  <button v-if="tag === 'clear'" class="clear-tags" @click="clearTags">
+  <button v-if="tag === 'clear'" class="clear-tags" @click="clearTags" :tabindex="focusable ? 0 : -1">
     <slot />
   </button>
-  <button v-else class="tag" :class="{selected: selected && isSelected}" @click="toggle">
+  <button v-else class="tag" :class="{selected: selected && isSelected}" @click="toggle" :tabindex="focusable ? 0 : -1">
     <slot />
   </button>
 </template>
@@ -10,7 +10,8 @@
 <script>
 export default {
     props: {
-      tag: String
+      tag: String,
+      focusable: Boolean
     },
     data() {
       return {
