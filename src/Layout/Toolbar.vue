@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="nav-container">
     <nav :class="{dark: theme === 'dark'}">
       <!-- <SearchBar /> -->
       <Dropdown />
@@ -45,12 +45,17 @@ export default {
 
 <style lang="scss" scoped>
 @import "../assets/base.scss";
-
+.nav-container {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 3;
+}
 nav {
   background-color: $light-menu;
   box-shadow: $nav-box-shadow;
   height: 3rem;
-  position: sticky;
+  position: relative;
   top: 0;
   z-index: 200;
   display: flex;

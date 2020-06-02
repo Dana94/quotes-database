@@ -151,11 +151,11 @@ export default {
 .container {
   width: 90%;
   margin: 0 auto;
+  padding-top: 5rem;
 }
 
 h1 {
   font-family: "Lobster", cursive;
-  margin: 2rem 0;
   font-size: 3rem;
 
   span {
@@ -165,7 +165,6 @@ h1 {
 
 @media (min-width: 768px) {
   h1 {
-    margin: 4rem 0;
     font-size: 4rem;
   }
 }
