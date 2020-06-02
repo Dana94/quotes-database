@@ -3,14 +3,16 @@
     <nav :class="{dark: theme === 'dark'}">
       <!-- <SearchBar /> -->
       <Dropdown />
-      <font-awesome-icon
-        tabindex="0"
-        icon="tags"
-        class="fa-lg tags-icon"
-        @click="showTagsMenu = !showTagsMenu"
-        @keydown.enter="showTagsMenu = !showTagsMenu"
-      />
-      <SwitchTheme />
+      <div class="icons">
+        <font-awesome-icon
+          tabindex="0"
+          icon="tags"
+          class="fa-lg tags-icon"
+          @click="showTagsMenu = !showTagsMenu"
+          @keydown.enter="showTagsMenu = !showTagsMenu"
+        />
+        <SwitchTheme />
+      </div>
     </nav>
     <TagsMenu :open="showTagsMenu" />
   </div>
@@ -54,13 +56,13 @@ export default {
 nav {
   background-color: $light-menu;
   box-shadow: $nav-box-shadow;
-  height: 3rem;
   position: relative;
   top: 0;
   z-index: 200;
   display: flex;
-  padding: 0 0.5rem;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 0.5rem;
 
   &.dark {
     background-color: $dark-card;
@@ -69,6 +71,17 @@ nav {
   .tags-icon {
     margin: auto;
     margin-right: 2rem;
+  }
+
+  .icons {
+    display: flex;
+  }
+}
+
+@media (min-width: 768px) {
+  nav {
+    flex-direction: row;
+    justify-content: space-between;
   }
 }
 </style>

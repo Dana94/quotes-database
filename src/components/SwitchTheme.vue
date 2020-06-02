@@ -37,10 +37,4 @@ export default {
 .sun {
   color: orange;
 }
-
-@media (min-width: 768px) {
-  .theme-switch {
-    margin-right: 3rem;
-  }
-}
 </style>
