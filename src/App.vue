@@ -14,7 +14,8 @@
           v-if="$apollo.queries.quotes.loading"
           :message="$apollo.queries.quotes.loadingKey"
         />
-        <cards v-else :quotes="quotes" />
+        <cards v-else-if="!!quotes" :quotes="quotes" />
+        <error v-else/>
       </main>
     </div>
   </div>
@@ -26,6 +27,7 @@ import gql from 'graphql-tag';
 import Toolbar from './Layout/Toolbar.vue';
 import Cards from './components/Cards/Cards';
 import Loading from './components/Loading.vue';
+import Error from './components/Error.vue';
 import 'animate.css';
 
 export default {
@@ -101,7 +103,8 @@ export default {
   components: {
     Toolbar,
     Cards,
-    Loading
+    Loading,
+    Error
   }
 }
 </script>
