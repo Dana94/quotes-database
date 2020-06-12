@@ -12,7 +12,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/base.scss";
+@import "../../assets/base.scss";
 
 p {
     font-family: $body-font-family;

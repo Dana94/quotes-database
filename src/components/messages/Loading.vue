@@ -2,17 +2,17 @@
   <div class="loading-message" :class="{dark: theme === 'dark'}">
     <img
       v-if="theme === 'light'"
-      src="../assets/svgs/light/red/quotes-left-light-red.svg"
+      src="../../assets/svgs/light/red/quotes-left-light-red.svg"
       class="quote-icon"
     />
-    <img v-else src="../assets/svgs/dark/pink/quotes-left-dark-pink.svg" class="quote-icon" />
+    <img v-else src="../../assets/svgs/dark/pink/quotes-left-dark-pink.svg" class="quote-icon" />
     {{message}}
     <img
       v-if="theme === 'light'"
-      src="../assets/svgs/light/red/quotes-right-light-red.svg"
+      src="../../assets/svgs/light/red/quotes-right-light-red.svg"
       class="quote-icon"
     />
-    <img v-else src="../assets/svgs/dark/pink/quotes-right-dark-pink.svg" class="quote-icon" />
+    <img v-else src="../../assets/svgs/dark/pink/quotes-right-dark-pink.svg" class="quote-icon" />
   </div>
 </template>
 
@@ -31,7 +31,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/base.scss";
+@import "../../assets/base.scss";
 
 .loading-message {
   display: flex;

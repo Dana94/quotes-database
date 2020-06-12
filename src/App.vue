@@ -26,8 +26,8 @@ import gql from 'graphql-tag';
 
 import Toolbar from './Layout/Toolbar.vue';
 import Cards from './components/Cards/Cards';
-import Loading from './components/Loading.vue';
-import Error from './components/Error.vue';
+import Loading from './components/messages/Loading.vue';
+import Error from './components/messages/Error.vue';
 import 'animate.css';
 
 export default {
