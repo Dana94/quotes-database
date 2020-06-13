@@ -1,6 +1,7 @@
 <template>
-  <div class="dropdown">
-    <select v-model="authorSelected">
+  <div class="dropdown" :class="{dark: theme === 'dark'}">
+    <label for="author-select">Choose an author:</label>
+    <select v-model="authorSelected" id="author-select" name="authors">
       <option :value="null">All authors</option>
       <option v-for="author in authors" :value="author.id" :key="author.id">{{author.name}}</option>
     </select>
@@ -25,6 +26,11 @@ export default {
             authors: []
         }
     },
+    computed: {
+      theme() {
+        return this.$store.getters.getTheme;
+      },
+    },
     watch: {
       authorSelected() {
         this.$store.dispatch('setAuthor', this.authorSelected);
@@ -44,19 +50,44 @@ export default {
 
 .dropdown {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-bottom: 1rem;
+  font-family: $body-font-family;
+  font-size: 1rem;
+
+  &.dark {
+    color: $dark-card-text;
+  }
+
+  label {
+    width: 100%;
+    margin-right: 0.5rem;
+  }
 
   select {
     border: none;
     border-radius: 10px;
     padding: 0.5rem;
     width: 100%;
+    font-family: $body-font-family;
+    font-size: 1rem;
   }
 }
 
 @media (min-width: 768px) {
   .dropdown {
     margin: 0;
+  }
+}
+
+@media (min-width: 670px) {
+  .dropdown {
+    flex-direction: row;
+
+    label {
+      width: 25%;
+    }
   }
 }
 </style>

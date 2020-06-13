@@ -143,7 +143,7 @@ export default {
 .container {
   width: 90%;
   margin: 0 auto;
-  padding-top: 5rem;
+  padding-top: 12rem;
 }
 
 h1 {
@@ -158,6 +158,10 @@ h1 {
 @media (min-width: 768px) {
   h1 {
     font-size: 4rem;
+  }
+
+  .container {
+    padding-top: 7rem;
   }
 }
 </style>
