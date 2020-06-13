@@ -67,8 +67,8 @@ nav {
   }
 
   .tags-icon {
-    margin: auto;
     margin-right: 2rem;
+    margin-left: 2rem;
   }
 
   .icons {
