@@ -1,10 +1,15 @@
 <template>
   <div class="dropdown" :class="{dark: theme === 'dark'}">
-    <label for="author-select">Choose an author:</label>
-    <select v-model="authorSelected" id="author-select" name="authors">
-      <option :value="null">All authors</option>
-      <option v-for="author in authors" :value="author.id" :key="author.id">{{author.name}}</option>
-    </select>
+    <p v-if="$apollo.queries.authors.loading" class="loading-message">
+      {{$apollo.queries.authors.loadingKey}}
+    </p>
+    <template v-else>
+      <label for="author-select">Choose an author:</label>
+      <select v-model="authorSelected" id="author-select" name="authors">
+        <option :value="null">All authors</option>
+        <option v-for="author in authors" :value="author.id" :key="author.id">{{author.name}}</option>
+      </select>
+    </template>
   </div>
 </template>
 
@@ -39,7 +44,8 @@ export default {
     },
     apollo: {
       authors: {
-        query: authorsQuery
+        query: authorsQuery,
+        loadingKey: "Authors loading..."
       }
     }
 }
@@ -73,6 +79,10 @@ export default {
     font-family: $body-font-family;
     font-size: 1rem;
   }
+}
+
+.loading-message {
+  margin: 0;
 }
 
 @media (min-width: 768px) {
