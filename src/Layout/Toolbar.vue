@@ -61,6 +61,7 @@ nav {
   flex-direction: column;
   align-items: center;
   padding: 1rem 0.5rem;
+  min-height: 43px;
 
   &.dark {
     background-color: $dark-card;
