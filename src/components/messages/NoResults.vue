@@ -1,17 +1,17 @@
 <template>
   <div :class="{dark: theme === 'dark'}">
-    <p>Sorry, things are down at the moment.</p>
-    <p>Check back next time!</p>
+    <font-awesome-icon :icon="['fas', 'search']" class="fa-4x search" />
+    <p>No quotes found with those tags.</p>
   </div>
 </template>
 
 <script>
 export default {
-    name: "Error",
+    name: "NoResults",
     computed: {
-      theme() {
-        return this.$store.getters.getTheme;
-      }
+        theme() {
+            return this.$store.getters.getTheme;
+        }
     }
 }
 </script>
@@ -23,7 +23,6 @@ p {
   font-family: $body-font-family;
   font-size: 1.5rem;
 }
-
 .dark {
   color: $dark-card-text;
 }

@@ -21,7 +21,7 @@ const apolloProvider = new VueApollo({
   defaultClient: apolloClient,
 });
 
-library.add(faChevronLeft, faChevronRight, faTwitter, faMoon, faSun, faArrowLeft, faArrowRight, faSearch, faTags, faTimes)
+library.add(faChevronLeft, faChevronRight, faTwitter, faMoon, faSun, faArrowLeft, faArrowRight, faSearch, faTags, faTimes, faSearch)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 

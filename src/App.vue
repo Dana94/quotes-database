@@ -14,7 +14,8 @@
           v-if="$apollo.queries.quotes.loading"
           :message="$apollo.queries.quotes.loadingKey"
         />
-        <cards v-else-if="!!quotes" :quotes="quotes" />
+        <cards v-else-if="!!quotes && quotes.length > 0" :quotes="quotes" />
+        <no-results v-else-if="!!quotes && quotes.length === 0"/>
         <error v-else/>
       </main>
     </div>
@@ -28,6 +29,7 @@ import Toolbar from './Layout/Toolbar.vue';
 import Cards from './components/Cards/Cards';
 import Loading from './components/messages/Loading.vue';
 import Error from './components/messages/Error.vue';
+import NoResults from './components/messages/NoResults.vue';
 import 'animate.css';
 
 export default {
@@ -104,7 +106,8 @@ export default {
     Toolbar,
     Cards,
     Loading,
-    Error
+    Error,
+    NoResults
   }
 }
 </script>
@@ -122,7 +125,6 @@ export default {
     background-color: $light-bg;
 
     h1,
-    .search-icon,
     .tags-icon {
       color: $dark-bg;
     }
@@ -132,7 +134,6 @@ export default {
     background-color: $dark-bg;
 
     h1,
-    .search-icon,
     .tag-arrow,
     .tags-icon {
       color: $light-bg;
