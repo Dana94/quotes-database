@@ -41,8 +41,8 @@ export default {
     quotes: {
       query () {
         if (this.authorSelected !== null) {
-          return gql`query authorQuotes($id: Int!) {
-            quotesByAuthorId(authorId: $id) {
+          return gql`query authorQuotes($id: Int!, $tags: [String]!) {
+            quotesByAuthorId(authorId: $id, tags: $tags) {
               quote
               author {
                 name
