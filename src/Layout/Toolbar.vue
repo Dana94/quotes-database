@@ -70,6 +70,10 @@ nav {
   .tags-icon {
     margin-right: 2rem;
     margin-left: 2rem;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   .icons {
