@@ -1,8 +1,19 @@
 <template>
-  <button v-if="tag === 'clear'" class="clear-tags" @click="clearTags" :tabindex="focusable ? 0 : -1">
+  <button
+    v-if="tag === 'clear'"
+    class="clear-tags"
+    @click="clearTags"
+    :tabindex="focusable ? 0 : -1"
+  >
     <slot />
   </button>
-  <button v-else class="tag" :class="{selected: selected && isSelected}" @click="toggle" :tabindex="focusable ? 0 : -1">
+  <button
+    v-else
+    class="tag"
+    :class="{selected: isSelected}"
+    @click="isSelected ? removeTag() : addTag()"
+    :tabindex="focusable ? 0 : -1"
+  >
     <slot />
   </button>
 </template>
@@ -13,59 +24,25 @@ export default {
       tag: String,
       focusable: Boolean
     },
-    data() {
-      return {
-        selected: false,
-        clear: false
-      }
-    },
     computed: {
       tags() {
         return this.$store.getters.getTags;
       },
-      // make sure the correct color shows if the tags were all cleared at once
+      // make sure the correct color shows if the tag is in the store
       isSelected() {
-        if(this.tags.includes(this.tag)) {
-          return true;
-        }else {
-          this.toggle();
-        }
-        return false;
+        return this.tags.includes(this.tag);
       }
     },
     methods: {
-        toggle() {
-            this.selected = !this.selected;
-            if (this.selected) {
-              this.addTag();
-            } else{
-              this.removeTag();
-            }
-        },
         addTag() {
           this.$store.dispatch('addTag', this.tag);
         },
         removeTag() {
-          // tag is selected to be removed
-          if(!this.clear) {
-            this.$store.dispatch('removeTag', this.tag);
-          }
+          this.$store.dispatch('removeTag', this.tag);
         },
         clearTags() {
-          this.clear = true;
-          // ??
-          setTimeout(() => {
-            this.clear = false;
-          }, 1000);
+          this.$store.dispatch('clearTags');
         }
-    },
-    watch: {
-      clear() {
-        // all tags need to remove themselves
-        if(this.clear) {
-          this.$store.dispatch('removeTag', this.tag);
-        }
-      }
     }
 }
 </script>
