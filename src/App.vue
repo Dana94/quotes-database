@@ -14,7 +14,9 @@
           v-if="$apollo.queries.quotes.loading"
           :message="$apollo.queries.quotes.loadingKey"
         />
-        <cards v-else :quotes="quotes" />
+        <cards v-else-if="!!quotes && quotes.length > 0" :quotes="quotes" />
+        <no-results v-else-if="!!quotes && quotes.length === 0"/>
+        <error v-else/>
       </main>
     </div>
   </div>
@@ -25,7 +27,9 @@ import gql from 'graphql-tag';
 
 import Toolbar from './Layout/Toolbar.vue';
 import Cards from './components/Cards/Cards';
-import Loading from './components/Loading.vue';
+import Loading from './components/messages/Loading.vue';
+import Error from './components/messages/Error.vue';
+import NoResults from './components/messages/NoResults.vue';
 import 'animate.css';
 
 export default {
@@ -39,8 +43,8 @@ export default {
     quotes: {
       query () {
         if (this.authorSelected !== null) {
-          return gql`query authorQuotes($id: Int!) {
-            quotesByAuthorId(authorId: $id) {
+          return gql`query authorQuotes($id: Int!, $tags: [String]!) {
+            quotesByAuthorId(authorId: $id, tags: $tags) {
               quote
               author {
                 name
@@ -101,7 +105,9 @@ export default {
   components: {
     Toolbar,
     Cards,
-    Loading
+    Loading,
+    Error,
+    NoResults
   }
 }
 </script>
@@ -119,7 +125,6 @@ export default {
     background-color: $light-bg;
 
     h1,
-    .search-icon,
     .tags-icon {
       color: $dark-bg;
     }
@@ -129,7 +134,6 @@ export default {
     background-color: $dark-bg;
 
     h1,
-    .search-icon,
     .tag-arrow,
     .tags-icon {
       color: $light-bg;
@@ -140,7 +144,7 @@ export default {
 .container {
   width: 90%;
   margin: 0 auto;
-  padding-top: 5rem;
+  padding-top: 12rem;
 }
 
 h1 {
@@ -155,6 +159,10 @@ h1 {
 @media (min-width: 768px) {
   h1 {
     font-size: 4rem;
+  }
+
+  .container {
+    padding-top: 7rem;
   }
 }
 </style>
