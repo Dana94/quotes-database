@@ -31,7 +31,7 @@
           </a>
         </p>
       </template>
-      <img :src="quoteIconRightSrc" class="quote-icon" />
+      <img :src="quoteIconRightSrc" class="quote-icon" alt="" />
       <footer role="contentinfo">
         <p>~ {{quote.author.name}} ~</p>
         <p>{{quote.author.description}}</p>
