@@ -6,7 +6,6 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     state: {
         theme: 'light',
-        quotes: [],
         search: '',
         authorId: null,
         tags: []
